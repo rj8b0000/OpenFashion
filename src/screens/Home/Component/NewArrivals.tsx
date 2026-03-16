@@ -3,8 +3,9 @@ import React from 'react';
 import { Colors, Spacing, Typography } from '../../../theme';
 import ICONS from '../../../constants/svgPath';
 import CategoryTabs from './CategoryTabs';
-import ProductComponent from '../../Products/Component/ProductComponent';
 import { productsData } from '../../../constants/productsData';
+import NewArrivalProducts from './NewArrivalProducts';
+import responsive from '../../../styles/responsive';
 
 const NewArrivals = () => {
   const isGrid = true;
@@ -30,17 +31,21 @@ const NewArrivals = () => {
         <FlatList
           key={isGrid ? 'grid' : 'list'}
           data={productsData}
-          renderItem={({ item }) => (
-            <ProductComponent item={item} isGrid={isGrid} />
-          )}
+          renderItem={({ item }) => <NewArrivalProducts item={item} />}
           keyExtractor={item => item.id}
           numColumns={isGrid ? 2 : 1}
           columnWrapperStyle={
             isGrid ? { justifyContent: 'space-between' } : undefined
           }
           showsVerticalScrollIndicator={false}
-          ListFooterComponent={<View style={{ height: 120 }} />}
+          ListFooterComponent={
+            <View style={{ height: responsive.height(38) }} />
+          }
         />
+      </View>
+      <View style={styles.exploreMore}>
+        <Text style={Typography.bodyLarge}>Explore More</Text>
+        <ICONS.FORWARD_ARROW />
       </View>
     </View>
   );
@@ -48,4 +53,11 @@ const NewArrivals = () => {
 
 export default NewArrivals;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  exploreMore: {
+    flexDirection: 'row',
+    gap: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

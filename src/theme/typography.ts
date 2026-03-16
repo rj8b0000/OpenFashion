@@ -23,6 +23,7 @@ export const Typography = {
   bodyLarge: makeTextStyle(FontFamily.regular, 16, 24, 0),
   bodyMedium: makeTextStyle(FontFamily.regular, 14, 24, 0),
   bodySmall: makeTextStyle(FontFamily.regular, 12, 18, 0),
+  newArrivalProductTitle: makeTextStyle(FontFamily.regular, 14, 18, 0),
 };
 
 export default Typography;

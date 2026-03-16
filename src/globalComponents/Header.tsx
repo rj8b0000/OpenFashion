@@ -1,17 +1,24 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import ICONS from '../constants/svgPath';
+import Animated from 'react-native-reanimated';
+import { IHeader } from '../types';
 
-const Header = () => {
+const AnimatedView = Animated.createAnimatedComponent(View);
+
+interface HeaderProps {
+  animatedStyle: IHeader;
+}
+const Header: React.FC<HeaderProps> = ({ animatedStyle }) => {
   return (
-    <View style={styles.localContainer}>
+    <AnimatedView style={[styles.localContainer, animatedStyle]}>
       <ICONS.MENU width={28} height={28} />
       <ICONS.LOGO width={88} height={44} style={{ marginLeft: '10%' }} />
       <View style={styles.localIconsContainer}>
         <ICONS.SEARCH width={28} height={28} />
         <ICONS.BAG width={26} height={26} />
       </View>
-    </View>
+    </AnimatedView>
   );
 };
 
