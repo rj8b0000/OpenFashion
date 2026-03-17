@@ -12,8 +12,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ animatedStyle }) => {
   return (
     <AnimatedView style={[styles.localContainer, animatedStyle]}>
-      <ICONS.MENU width={28} height={28} />
-      <ICONS.LOGO width={88} height={44} style={{ marginLeft: '10%' }} />
+      <ICONS.MENU width={22} height={22} />
+      <ICONS.LOGO width={80} height={40} style={{ marginLeft: '10%' }} />
       <View style={styles.localIconsContainer}>
         <ICONS.SEARCH width={28} height={28} />
         <ICONS.BAG width={26} height={26} />

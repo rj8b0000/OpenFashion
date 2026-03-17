@@ -7,3 +7,9 @@ export interface Product {
 export interface IHeader {
   backgroundColor: any;
 }
+export interface PLPHome {
+  id: string;
+  name: string;
+  price: number;
+  image: any;
+}

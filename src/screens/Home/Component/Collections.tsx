@@ -4,6 +4,7 @@ import { Colors, Spacing, Typography } from '../../../theme';
 import { useTranslation } from 'react-i18next';
 import responsive from '../../../styles/responsive';
 import IMAGES from '../../../constants/imagePath';
+import { GlobalStyles } from '../../../theme/styles';
 
 const Collections = () => {
   const { t } = useTranslation();
@@ -14,10 +15,16 @@ const Collections = () => {
       </View>
       <View style={styles.bannerMain}>
         <View style={styles.bannerSecondary}>
-          <Image source={IMAGES.COLLECTION_BANNER1} style={styles.image} />
+          <Image
+            source={IMAGES.COLLECTION_BANNER1}
+            style={GlobalStyles.imageFull}
+          />
         </View>
         <View style={styles.banner2}>
-          <Image source={IMAGES.COLLECTION_BANNER2} style={styles.image} />
+          <Image
+            source={IMAGES.COLLECTION_BANNER2}
+            style={GlobalStyles.imageFull}
+          />
         </View>
       </View>
     </View>
@@ -46,10 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: responsive.height(240),
-  },
-  image: {
-    width: '100%',
-    height: '100%',
   },
   banner2: {
     justifyContent: 'center',

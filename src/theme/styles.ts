@@ -14,4 +14,8 @@ export const GlobalStyles = StyleSheet.create({
     paddingHorizontal: Spacing.xl,
     paddingTop: Spacing.sm,
   },
+  imageFull: {
+    width: '100%',
+    height: '100%',
+  },
 });
