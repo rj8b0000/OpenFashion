@@ -7,11 +7,12 @@ import {
   ScrollView,
 } from 'react-native';
 import { Colors, Spacing, Typography } from '../../../theme';
-
-const tabs = ['All', 'Apparel', 'Dress', 'Tshirt', 'Bag'];
+import { useTranslation } from 'react-i18next';
 
 const CategoryTabs = () => {
   const [activeTab, setActiveTab] = useState('All');
+  const { t } = useTranslation();
+  const tabs = [t('all'), t('appreal'), t('dress'), t('tshirt'), t('bag')];
 
   return (
     <View style={styles.container}>

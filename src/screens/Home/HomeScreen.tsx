@@ -15,6 +15,7 @@ import Animated, {
   useAnimatedStyle,
   interpolateColor,
 } from 'react-native-reanimated';
+import Collections from './Component/Collections';
 
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
@@ -64,6 +65,7 @@ const HomeScreen = () => {
 
         <NewArrivals />
         <BrandsList />
+        <Collections />
       </Animated.ScrollView>
     </AnimatedSafeAreaView>
   );

@@ -10,7 +10,7 @@ import {
   Text,
 } from 'react-native';
 import { Colors, Spacing, Typography } from '../../../theme';
-import { BlurView } from '@react-native-community/blur';
+import { useTranslation } from 'react-i18next';
 
 type CusomSliderProps = {
   sliderData: any[];
@@ -21,7 +21,7 @@ const { width } = Dimensions.get('window');
 const CustomSlider = ({ sliderData = [] }: CusomSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const flatRef = useRef<FlatList>(null);
-
+  const { t } = useTranslation();
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const slide = Math.round(event.nativeEvent.contentOffset.x / width);
     setActiveIndex(slide);
@@ -46,7 +46,7 @@ const CustomSlider = ({ sliderData = [] }: CusomSliderProps) => {
 
       {/* Explore More Buttom  */}
       <View style={styles.exploreMoreBtn}>
-        <Text style={styles.exploreText}>EXPLORE COLLECTION</Text>
+        <Text style={styles.exploreText}>{t('exploreCollection')}</Text>
       </View>
 
       {/* Pagination */}

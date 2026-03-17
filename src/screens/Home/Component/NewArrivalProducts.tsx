@@ -1,13 +1,14 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import ICONS from '../../../constants/svgPath';
 import { Colors, FontFamily, Typography } from '../../../theme';
 import { Product } from '../../../types';
+import { useTranslation } from 'react-i18next';
 
 interface NewArrivalProductsProps {
   item: Product;
 }
 const NewArrivalProducts: React.FC<NewArrivalProductsProps> = ({ item }) => {
+  const { t } = useTranslation();
   return (
     <View style={[styles.container]}>
       <View style={[styles.innerContainer]}>
@@ -22,7 +23,7 @@ const NewArrivalProducts: React.FC<NewArrivalProductsProps> = ({ item }) => {
                 { textAlign: 'center' },
               ]}
             >
-              {item.name}
+              {t(item.name)}
             </Text>
             <Text style={[Typography.bodyLarge, styles.priceText]}>
               ${item.price}

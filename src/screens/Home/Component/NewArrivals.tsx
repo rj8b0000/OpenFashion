@@ -6,9 +6,11 @@ import CategoryTabs from './CategoryTabs';
 import { productsData } from '../../../constants/productsData';
 import NewArrivalProducts from './NewArrivalProducts';
 import responsive from '../../../styles/responsive';
+import { useTranslation } from 'react-i18next';
 
 const NewArrivals = () => {
   const isGrid = true;
+  const { t } = useTranslation();
   return (
     <View style={{ backgroundColor: Colors.white, paddingTop: Spacing.xxxl }}>
       <View
@@ -18,7 +20,7 @@ const NewArrivals = () => {
           alignItems: 'center',
         }}
       >
-        <Text style={Typography.bodyLarge}>NEW ARRIVALS</Text>
+        <Text style={Typography.bodyLarge}>{t('newArrivals')}</Text>
         <ICONS.DIVIDER />
       </View>
       <CategoryTabs />
@@ -44,7 +46,7 @@ const NewArrivals = () => {
         />
       </View>
       <View style={styles.exploreMore}>
-        <Text style={Typography.bodyLarge}>Explore More</Text>
+        <Text style={Typography.bodyLarge}>{t('exploreMore')}</Text>
         <ICONS.FORWARD_ARROW />
       </View>
     </View>
