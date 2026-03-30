@@ -20,7 +20,15 @@ import Boss from '../assets/icons/svg/Boss.svg';
 import Catier from '../assets/icons/svg/Catier.svg';
 import Gucci from '../assets/icons/svg/Gucci.svg';
 import TiffanyCo from '../assets/icons/svg/TiffanyCo.svg';
-
+import FastDelivery from '../assets/icons/svg/Fastdelivery.svg';
+import SustainableProcess from '../assets/icons/svg/SustainableProcess.svg';
+import Unique from '../assets/icons/svg/Unique.svg';
+import FastDelivery2 from '../assets/icons/svg/FastShipping2.svg';
+import Curves from '../assets/icons/svg/Curves.svg';
+import Instagram from '../assets/icons/svg/Instagram.svg';
+import IgFooter from '../assets/icons/svg/IgFooter.svg';
+import YouTube from '../assets/icons/svg/YouTube.svg';
+import Twitter from '../assets/icons/svg/Twitter.svg';
 export default {
   BAG: Bag,
   ARROW: Arrow,
@@ -44,4 +52,13 @@ export default {
   CATIER: Catier,
   GUCCI: Gucci,
   TIFFANYCO: TiffanyCo,
+  FAST_DELIVERY: FastDelivery,
+  SUSTAINABLE_PROCESS: SustainableProcess,
+  UNIQUE: Unique,
+  FAST_DELIVERY2: FastDelivery2,
+  CURVES: Curves,
+  INSTAGRAM: Instagram,
+  IG_FOOTER: IgFooter,
+  YOUTUBE: YouTube,
+  TWITTER: Twitter,
 };

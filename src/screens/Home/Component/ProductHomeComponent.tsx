@@ -14,32 +14,12 @@ const ProductHomeComponent: React.FC<ProductHomeComponentProps> = ({
 }) => {
   return (
     <View>
-      <View
-        style={{
-          width: responsive.width(254),
-          height: responsive.height(310),
-          marginRight: Spacing.md,
-        }}
-      >
+      <View style={styles.imageContainer}>
         <Image source={item.image} style={GlobalStyles.imageFull} />
       </View>
-      <View
-        style={{
-          height: responsive.height(72),
-          width: responsive.width(254),
-        }}
-      >
-        <Text style={[Typography.bodyLarge, { textAlign: 'center' }]}>
-          {item.name}
-        </Text>
-        <Text
-          style={[
-            Typography.bodyLarge,
-            { color: Colors.primary, textAlign: 'center' },
-          ]}
-        >
-          ${item.price}
-        </Text>
+      <View style={styles.contentContainer}>
+        <Text style={[Typography.bodyLarge, styles.name]}>{item.name}</Text>
+        <Text style={[Typography.bodyLarge, styles.price]}>${item.price}</Text>
       </View>
     </View>
   );
@@ -47,4 +27,21 @@ const ProductHomeComponent: React.FC<ProductHomeComponentProps> = ({
 
 export default ProductHomeComponent;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  imageContainer: {
+    width: responsive.width(254),
+    height: responsive.height(310),
+    marginRight: Spacing.md,
+  },
+  contentContainer: {
+    height: responsive.height(72),
+    width: responsive.width(254),
+  },
+  name: {
+    textAlign: 'center',
+  },
+  price: {
+    color: Colors.primary,
+    textAlign: 'center',
+  },
+});

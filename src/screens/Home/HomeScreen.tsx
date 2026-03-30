@@ -17,6 +17,10 @@ import Animated, {
 } from 'react-native-reanimated';
 import Collections from './Component/Collections';
 import PLPHome from './Component/PLPHome';
+import TrendingComponent from './Component/TrendingComponent';
+import InfoComponent from './Component/InfoComponent';
+import FollowUsComponent from './Component/FollowUsComponent';
+import Footer from '../../globalComponents/Footer';
 
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
@@ -68,6 +72,10 @@ const HomeScreen = () => {
         <BrandsList />
         <Collections />
         <PLPHome />
+        <TrendingComponent />
+        <InfoComponent />
+        <FollowUsComponent />
+        <Footer />
       </Animated.ScrollView>
     </AnimatedSafeAreaView>
   );

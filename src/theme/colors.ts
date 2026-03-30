@@ -11,5 +11,9 @@ export const Colors = {
   placeholder: '#888888',
   white: '#ffffff',
   bannerGray: '#E7EAEF',
+  black: '#000000',
+  tagBg: '#F9F9F9',
+  infoColor: '#555555',
+  infoBg: '#F2F2F2',
 };
 export default Colors;

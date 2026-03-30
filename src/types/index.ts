@@ -13,3 +13,7 @@ export interface PLPHome {
   price: number;
   image: any;
 }
+export interface Tags {
+  id: string;
+  name: string;
+}
