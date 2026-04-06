@@ -27,6 +27,9 @@ export const Typography = {
   tagFonts: makeTextStyle(FontFamily.regular, 16, 14, 0),
   infoText: makeTextStyle(FontFamily.regular, 16, 24, 0),
   infoListText: makeTextStyle(FontFamily.regular, 13, 20, 0),
+  filterBarText: makeTextStyle(FontFamily.regular, 14, 18, 0),
+  blogTitle: makeTextStyle(FontFamily.regular, 14, 20, 0),
+  blogDescription: makeTextStyle(FontFamily.regular, 14, 24, 0),
 };
 
 export default Typography;

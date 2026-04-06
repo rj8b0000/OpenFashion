@@ -15,5 +15,7 @@ export const Colors = {
   tagBg: '#F9F9F9',
   infoColor: '#555555',
   infoBg: '#F2F2F2',
+  loadMoreBtnBorder: '#DEDEDE',
+  footerCopyRightBg: '#e6e1e1ff',
 };
 export default Colors;

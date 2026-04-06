@@ -28,7 +28,12 @@ import Curves from '../assets/icons/svg/Curves.svg';
 import Instagram from '../assets/icons/svg/Instagram.svg';
 import IgFooter from '../assets/icons/svg/IgFooter.svg';
 import YouTube from '../assets/icons/svg/YouTube.svg';
+import Diamond from '../assets/icons/svg/Diamond.svg';
+import Location from '../assets/icons/svg/Location.svg';
+import Phone from '../assets/icons/svg/Phone.svg';
+import ArrowUp from '../assets/icons/svg/ArrowUp.svg';
 import Twitter from '../assets/icons/svg/Twitter.svg';
+
 export default {
   BAG: Bag,
   ARROW: Arrow,
@@ -61,4 +66,8 @@ export default {
   IG_FOOTER: IgFooter,
   YOUTUBE: YouTube,
   TWITTER: Twitter,
+  DIAMOND: Diamond,
+  LOCATION: Location,
+  PHONE: Phone,
+  UP: ArrowUp,
 };

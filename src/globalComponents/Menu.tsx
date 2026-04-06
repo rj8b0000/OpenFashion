@@ -1,0 +1,291 @@
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  LayoutAnimation,
+  Platform,
+  UIManager,
+} from 'react-native';
+import ICONS from '../constants/svgPath';
+import { Colors, Spacing, Typography } from '../theme';
+import responsive from '../styles/responsive';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
+interface MenuProps {
+  onClose: () => void;
+}
+
+const Menu: React.FC<MenuProps> = ({ onClose }) => {
+  const [activeTab, setActiveTab] = useState<'women' | 'man' | 'kids'>('women');
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+
+  const categories = [
+    'New',
+    'Apparel',
+    'Bag',
+    'Shoes',
+    'Beauty',
+    'Accessories',
+  ];
+  const apparelSubItems = [
+    'Outer',
+    'Dress',
+    'Blouse/Shirt',
+    'T-Shirt',
+    'Knitwear',
+    'Skirt',
+    'Pants',
+    'Denim',
+    'Kids',
+  ];
+
+  const handleToggleExpand = (item: string) => {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    setExpandedItem(expandedItem === item ? null : item);
+  };
+
+  const renderTab = (tab: 'women' | 'man' | 'kids', label: string) => {
+    const isActive = activeTab === tab;
+    return (
+      <TouchableOpacity
+        style={styles.tabContainer}
+        onPress={() => setActiveTab(tab)}
+        activeOpacity={0.7}
+      >
+        <Text
+          style={[
+            Typography.subTitle,
+            styles.tabText,
+            { color: isActive ? Colors.black : Colors.placeholder },
+          ]}
+        >
+          {label}
+        </Text>
+        <View style={styles.indicatorContainer}>
+          {isActive ? (
+            <View style={styles.activeIndicatorWrapper}>
+              <View style={styles.indicatorLine} />
+              <ICONS.DIAMOND style={styles.indicatorDiamond} />
+              <View style={styles.indicatorLine} />
+            </View>
+          ) : (
+            <View style={styles.inactiveIndicatorLine} />
+          )}
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
+  return (
+    // <View style={styles.modalBackground}>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.container}>
+        {/* Header */}
+        <TouchableOpacity
+          style={styles.closeButton}
+          onPress={onClose}
+          hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
+        >
+          <View style={{ transform: [{ rotate: '45deg' }] }}>
+            <ICONS.PLUS width={24} height={24} />
+          </View>
+        </TouchableOpacity>
+
+        {/* Tabs */}
+        <View style={styles.tabsHeader}>
+          {renderTab('women', 'WOMEN')}
+          {renderTab('man', 'MAN')}
+          {renderTab('kids', 'KIDS')}
+        </View>
+
+        {/* Menu Items */}
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollContent}
+        >
+          {categories.map(item => (
+            <View key={item} style={styles.menuItemWrapper}>
+              <TouchableOpacity
+                style={styles.menuItem}
+                onPress={() => handleToggleExpand(item)}
+                activeOpacity={0.8}
+              >
+                <Text style={[Typography.bodyLarge, styles.menuItemText]}>
+                  {item}
+                </Text>
+                {expandedItem === item ? (
+                  <ICONS.UP width={20} height={20} />
+                ) : (
+                  <ICONS.DOWN width={20} height={20} />
+                )}
+              </TouchableOpacity>
+
+              {expandedItem === item && item === 'Apparel' && (
+                <View style={styles.expandedContent}>
+                  {apparelSubItems.map(subItem => (
+                    <TouchableOpacity key={subItem} style={styles.subItem}>
+                      <Text style={[Typography.bodyMedium, styles.subItemText]}>
+                        {subItem}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              )}
+            </View>
+          ))}
+
+          {/* Contact Info */}
+          <View style={styles.contactSection}>
+            <View style={styles.contactItem}>
+              <ICONS.PHONE width={24} height={24} />
+              <Text style={[Typography.bodyLarge, styles.contactText]}>
+                (786) 713-8616
+              </Text>
+            </View>
+            <View style={styles.contactItem}>
+              <ICONS.LOCATION width={24} height={24} />
+              <Text style={[Typography.bodyLarge, styles.contactText]}>
+                Store locator
+              </Text>
+            </View>
+          </View>
+
+          {/* Divider and Socials */}
+          <View style={styles.footer}>
+            <ICONS.DIVIDER style={styles.footerDivider} />
+            <View style={styles.socialIcons}>
+              <ICONS.TWITTER width={24} height={24} />
+              <ICONS.IG_FOOTER width={24} height={24} />
+              <ICONS.YOUTUBE width={24} height={24} />
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    </SafeAreaView>
+    // </View>
+  );
+};
+
+export default Menu;
+
+const styles = StyleSheet.create({
+  modalBackground: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1000,
+  },
+  safeArea: {
+    flex: 1,
+  },
+  container: {
+    flex: 1,
+    paddingHorizontal: Spacing.xl,
+  },
+  closeButton: {
+    marginTop: Spacing.md,
+    marginBottom: Spacing.lg,
+  },
+  tabsHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: Spacing.xl,
+  },
+  tabContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  tabText: {
+    marginBottom: Spacing.xs,
+  },
+  indicatorContainer: {
+    height: 10,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  activeIndicatorWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+  },
+  indicatorLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: Colors.secondary,
+    opacity: 0.5,
+  },
+  indicatorDiamond: {
+    marginHorizontal: -4,
+    width: 9,
+    height: 9,
+  },
+  inactiveIndicatorLine: {
+    width: '100%',
+    height: 1,
+    backgroundColor: Colors.placeholder,
+    opacity: 0.1,
+  },
+  scrollContent: {
+    paddingBottom: Spacing.xl * 2,
+  },
+  menuItemWrapper: {
+    marginBottom: Spacing.sm,
+  },
+  menuItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: Spacing.md,
+  },
+  menuItemText: {
+    color: Colors.titleActive,
+  },
+  expandedContent: {
+    paddingLeft: Spacing.xl,
+    marginTop: -Spacing.xs,
+  },
+  subItem: {
+    paddingVertical: Spacing.sm,
+  },
+  subItemText: {
+    color: Colors.label,
+  },
+  contactSection: {
+    marginTop: Spacing.xl * 2,
+  },
+  contactItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: Spacing.xl,
+  },
+  contactText: {
+    marginLeft: Spacing.md,
+    color: Colors.label,
+  },
+  footer: {
+    alignItems: 'center',
+    marginTop: Spacing.xl,
+  },
+  footerDivider: {
+    marginBottom: Spacing.xl,
+  },
+  socialIcons: {
+    flexDirection: 'row',
+    gap: Spacing.xl * 2,
+    marginTop: Spacing.md,
+  },
+});

@@ -1,20 +1,39 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomeScreen from '../screens/Home/HomeScreen';
+import BlogScreen from '../screens/Blog/BlogScreen';
+import Menu from '../globalComponents/Menu';
 
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const MainStack = () => (
+  <Stack.Navigator initialRouteName="Blog">
+    <Stack.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen
+      name="Blog"
+      component={BlogScreen}
+      options={{ headerShown: false }}
+    />
+  </Stack.Navigator>
+);
+
 const AppNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
+      <Drawer.Navigator
+        drawerContent={props => <Menu onClose={() => props.navigation.closeDrawer()} />}
+        screenOptions={{ headerShown: false, drawerType: 'front' }}
+      >
+        <Drawer.Screen name="Main" component={MainStack} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
