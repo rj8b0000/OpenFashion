@@ -1,9 +1,9 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
-
-export type MainTabParamList = {
-  Home: undefined;
-};
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
-  MainTab: NavigatorScreenParams<MainTabParamList>;
+  Home: undefined;
+  Blog: undefined;
+  Category: undefined;
 };
+
+export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;

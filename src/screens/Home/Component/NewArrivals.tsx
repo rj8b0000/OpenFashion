@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import { Colors, Spacing, Typography } from '../../../theme';
 import ICONS from '../../../constants/svgPath';
@@ -7,8 +13,11 @@ import { productsData } from '../../../constants/productsData';
 import NewArrivalProducts from './NewArrivalProducts';
 import responsive from '../../../styles/responsive';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../../../navigator/types';
 
 const NewArrivals = () => {
+  const navigation = useNavigation<RootStackNavigationProp>();
   const isGrid = true;
   const { t } = useTranslation();
   return (
@@ -45,10 +54,13 @@ const NewArrivals = () => {
           }
         />
       </View>
-      <View style={styles.exploreMore}>
+      <TouchableOpacity
+        style={styles.exploreMore}
+        onPress={() => navigation.navigate('Category')}
+      >
         <Text style={Typography.bodyLarge}>{t('exploreMore')}</Text>
         <ICONS.FORWARD_ARROW />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

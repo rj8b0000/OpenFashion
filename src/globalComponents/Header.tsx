@@ -8,7 +8,7 @@ import { IHeader } from '../types';
 const AnimatedView = Animated.createAnimatedComponent(View);
 
 interface HeaderProps {
-  animatedStyle: IHeader;
+  animatedStyle?: IHeader;
 }
 const Header: React.FC<HeaderProps> = ({ animatedStyle }) => {
   const navigation = useNavigation<any>();

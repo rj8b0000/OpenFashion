@@ -30,5 +30,12 @@
   "contact": "Contact",
   "blog": "Blog",
   "loadMore": "Load More",
-  "copyRightText": "Copyright© OpenUI All Rights Reserved."
+  "copyRightText": "Copyright© OpenUI All Rights Reserved.",
+  "categoryApparelCount": "4500 APPAREL",
+  "categoryNew": "New",
+  "categoryRatings": "4.8 Ratings",
+  "categorySize": "Size",
+  "sizeSmall": "S",
+  "sizeMedium": "M",
+  "sizeLarge": "L"
 }
