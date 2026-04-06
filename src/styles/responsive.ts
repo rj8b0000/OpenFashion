@@ -6,7 +6,10 @@ const BASE_HEIGHT = 812;
 const scaleSize = (size: number) => (width / BASE_WIDTH) * size;
 const verticalScaleSize = (size: number) => (height / BASE_HEIGHT) * size;
 const responsiveFontSize = (size: number) => {
-  const scaleFactor = Math.min(width / BASE_WIDTH, height / BASE_HEIGHT);
+  const isTablet = width > 600;
+  const scaleFactor = isTablet 
+    ? (width / BASE_WIDTH) * 0.85 // Heavier scaling for tablet
+    : Math.min(width / BASE_WIDTH, height / BASE_HEIGHT);
   return Math.round(size * scaleFactor);
 };
 

@@ -8,13 +8,20 @@ import { TouchableOpacity } from 'react-native';
 interface FilterBarProps {
   isGrid: boolean;
   setIsGrid: React.Dispatch<React.SetStateAction<boolean>>;
+  onFilterPress?: () => void;
+  totalItems: number;
 }
 
-const FilterBar = ({ isGrid, setIsGrid }: FilterBarProps) => {
+const FilterBar = ({
+  isGrid,
+  setIsGrid,
+  onFilterPress,
+  totalItems,
+}: FilterBarProps) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('categoryApparelCount')}</Text>
+      <Text style={styles.title}>{t('categoryApparelCount', { count: totalItems })}</Text>
       <View style={styles.rightSection}>
         <View style={styles.newBadge}>
           <Text style={styles.newBadgeText}>{t('categoryNew')}</Text>
@@ -32,9 +39,9 @@ const FilterBar = ({ isGrid, setIsGrid }: FilterBarProps) => {
             <ICONS.LISTVIEW width={22} height={22} />
           )}
         </TouchableOpacity>
-        <View style={styles.iconWrapper}>
+        <TouchableOpacity style={styles.iconWrapper} onPress={onFilterPress}>
           <ICONS.FILTER width={24} height={24} />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -4,6 +4,7 @@ import ICONS from '../constants/svgPath';
 import Animated from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { IHeader } from '../types';
+import responsive from '../styles/responsive';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
@@ -15,20 +16,38 @@ const Header: React.FC<HeaderProps> = ({ animatedStyle }) => {
 
   return (
     <AnimatedView style={[styles.localContainer, animatedStyle]}>
-      <TouchableOpacity
-        onPress={() => navigation.openDrawer()}
-        activeOpacity={0.7}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-      >
-        <ICONS.MENU width={22} height={22} />
-      </TouchableOpacity>
-      <ICONS.LOGO width={74} height={36} style={{ marginLeft: '10%' }} />
-      <View style={styles.localIconsContainer}>
-        <TouchableOpacity activeOpacity={0.7}>
-          <ICONS.SEARCH width={26} height={26} />
+      <View style={styles.leftContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.openDrawer()}
+          activeOpacity={0.7}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        >
+          <ICONS.MENU
+            width={responsive.width(22)}
+            height={responsive.width(22)}
+          />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.centerContainer}>
+        <ICONS.LOGO
+          width={responsive.width(80)}
+          height={responsive.height(36)}
+        />
+      </View>
+
+      <View style={styles.rightContainer}>
         <TouchableOpacity activeOpacity={0.7}>
-          <ICONS.BAG width={24} height={24} />
+          <ICONS.SEARCH
+            width={responsive.width(26)}
+            height={responsive.width(26)}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity activeOpacity={0.7} style={{ marginLeft: responsive.width(14) }}>
+          <ICONS.BAG
+            width={responsive.width(24)}
+            height={responsive.width(24)}
+          />
         </TouchableOpacity>
       </View>
     </AnimatedView>
@@ -41,12 +60,21 @@ const styles = StyleSheet.create({
   localContainer: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: '4%',
+    paddingHorizontal: responsive.padding(16),
   },
-  localIconsContainer: {
+  leftContainer: {
+    flex: 1,
+    alignItems: 'flex-start',
+  },
+  centerContainer: {
+    flex: 2,
+    alignItems: 'center',
+  },
+  rightContainer: {
+    flex: 1,
     flexDirection: 'row',
-    gap: 14,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
 });

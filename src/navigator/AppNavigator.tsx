@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,6 +8,9 @@ import BlogScreen from '../screens/Blog/BlogScreen';
 import Menu from '../globalComponents/Menu';
 import CategoryScreen from '../screens/Category/CategoryScreen';
 import { RootStackParamList } from './types';
+
+const { width } = Dimensions.get('window');
+const isTablet = width > 600;
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator();
@@ -39,7 +42,13 @@ const AppNavigator = () => {
         drawerContent={props => (
           <Menu onClose={() => props.navigation.closeDrawer()} />
         )}
-        screenOptions={{ headerShown: false, drawerType: 'front' }}
+        screenOptions={{
+          headerShown: false,
+          drawerType: 'front',
+          drawerStyle: {
+            width: isTablet ? '60%' : '85%',
+          },
+        }}
       >
         <Drawer.Screen name="Main" component={MainStack} />
       </Drawer.Navigator>

@@ -31,7 +31,7 @@
   "blog": "Blog",
   "loadMore": "Load More",
   "copyRightText": "Copyright© OpenUI All Rights Reserved.",
-  "categoryApparelCount": "4500 APPAREL",
+  "categoryApparelCount": "{{count}} APPAREL",
   "categoryNew": "New",
   "categoryRatings": "4.8 Ratings",
   "categorySize": "Size",

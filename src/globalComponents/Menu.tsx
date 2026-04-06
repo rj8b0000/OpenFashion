@@ -13,6 +13,10 @@ import ICONS from '../constants/svgPath';
 import { Colors, Spacing, Typography } from '../theme';
 import responsive from '../styles/responsive';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Dimensions } from 'react-native';
+
+const { width } = Dimensions.get('window');
+const isTablet = width > 600;
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -88,7 +92,7 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
   return (
     // <View style={styles.modalBackground}>
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+      <View style={[styles.container, isTablet && styles.tabletContainer]}>
         {/* Header */}
         <TouchableOpacity
           style={styles.closeButton}
@@ -96,7 +100,10 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
           hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
         >
           <View style={{ transform: [{ rotate: '45deg' }] }}>
-            <ICONS.PLUS width={24} height={24} />
+            <ICONS.PLUS
+              width={responsive.width(24)}
+              height={responsive.width(24)}
+            />
           </View>
         </TouchableOpacity>
 
@@ -123,9 +130,15 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
                   {item}
                 </Text>
                 {expandedItem === item ? (
-                  <ICONS.UP width={20} height={20} />
+                  <ICONS.UP
+                    width={responsive.width(20)}
+                    height={responsive.width(20)}
+                  />
                 ) : (
-                  <ICONS.DOWN width={20} height={20} />
+                  <ICONS.DOWN
+                    width={responsive.width(20)}
+                    height={responsive.width(20)}
+                  />
                 )}
               </TouchableOpacity>
 
@@ -146,13 +159,19 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
           {/* Contact Info */}
           <View style={styles.contactSection}>
             <View style={styles.contactItem}>
-              <ICONS.PHONE width={24} height={24} />
+              <ICONS.PHONE
+                width={responsive.width(24)}
+                height={responsive.width(24)}
+              />
               <Text style={[Typography.bodyLarge, styles.contactText]}>
                 (786) 713-8616
               </Text>
             </View>
             <View style={styles.contactItem}>
-              <ICONS.LOCATION width={24} height={24} />
+              <ICONS.LOCATION
+                width={responsive.width(24)}
+                height={responsive.width(24)}
+              />
               <Text style={[Typography.bodyLarge, styles.contactText]}>
                 Store locator
               </Text>
@@ -163,9 +182,18 @@ const Menu: React.FC<MenuProps> = ({ onClose }) => {
           <View style={styles.footer}>
             <ICONS.DIVIDER style={styles.footerDivider} />
             <View style={styles.socialIcons}>
-              <ICONS.TWITTER width={24} height={24} />
-              <ICONS.IG_FOOTER width={24} height={24} />
-              <ICONS.YOUTUBE width={24} height={24} />
+              <ICONS.TWITTER
+                width={responsive.width(24)}
+                height={responsive.width(24)}
+              />
+              <ICONS.IG_FOOTER
+                width={responsive.width(24)}
+                height={responsive.width(24)}
+              />
+              <ICONS.YOUTUBE
+                width={responsive.width(24)}
+                height={responsive.width(24)}
+              />
             </View>
           </View>
         </ScrollView>
@@ -193,7 +221,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingHorizontal: Spacing.xl,
+    paddingHorizontal: isTablet ? Spacing.md : Spacing.xl,
   },
   closeButton: {
     marginTop: Spacing.md,
@@ -212,7 +240,7 @@ const styles = StyleSheet.create({
     marginBottom: Spacing.xs,
   },
   indicatorContainer: {
-    height: 10,
+    height: responsive.height(10),
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -224,18 +252,18 @@ const styles = StyleSheet.create({
   },
   indicatorLine: {
     flex: 1,
-    height: 1,
+    height: responsive.height(1),
     backgroundColor: Colors.secondary,
     opacity: 0.5,
   },
   indicatorDiamond: {
-    marginHorizontal: -4,
-    width: 9,
-    height: 9,
+    marginHorizontal: -responsive.width(4),
+    width: responsive.width(9),
+    height: responsive.width(9),
   },
   inactiveIndicatorLine: {
     width: '100%',
-    height: 1,
+    height: responsive.height(1),
     backgroundColor: Colors.placeholder,
     opacity: 0.1,
   },
@@ -285,7 +313,12 @@ const styles = StyleSheet.create({
   },
   socialIcons: {
     flexDirection: 'row',
-    gap: Spacing.xl * 2,
+    gap: isTablet ? Spacing.xl * 1.5 : Spacing.xl * 2,
     marginTop: Spacing.md,
+  },
+  tabletContainer: {
+    maxWidth: 600,
+    alignSelf: 'center',
+    width: '100%',
   },
 });
