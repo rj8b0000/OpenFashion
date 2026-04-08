@@ -10,8 +10,10 @@ import CheckoutSectionTitle from './Component/CheckoutSectionTitle';
 import CheckoutSubHeading from './Component/CheckoutSubHeading';
 import ActionRow from './Component/ActionRow';
 import AddressCard from './Component/AddressCard';
+import { useTranslation } from 'react-i18next';
 
 const ShippingAddress = () => {
+  const { t } = useTranslation();
   const address = [
     {
       id: '1',
@@ -32,10 +34,10 @@ const ShippingAddress = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <CheckoutSectionTitle title="CHECKOUT" />
+        <CheckoutSectionTitle title={t('checkoutTitle')} />
 
         <View style={styles.section}>
-          <CheckoutSubHeading title="SHIPPING ADDRESS" />
+          <CheckoutSubHeading title={t('shippingAddress')} />
           <FlatList
             data={address}
             keyExtractor={item => item.id}
@@ -43,7 +45,7 @@ const ShippingAddress = () => {
             scrollEnabled={false}
           />
           <ActionRow
-            title="Add shipping address"
+            title={t('addShippingAddress')}
             Icon={
               <ICONS.PLUS width={20} height={20} color={Colors.titleActive} />
             }
@@ -51,9 +53,9 @@ const ShippingAddress = () => {
         </View>
 
         <View style={styles.section}>
-          <CheckoutSubHeading title="SHIPPING METHOD" />
+          <CheckoutSubHeading title={t('shippingMethod')} />
           <ActionRow
-            title="Pickup at store"
+            title={t('pickupAtStore')}
             Icon={
               <ICONS.DOWN width={24} height={24} color={Colors.titleActive} />
             }
@@ -61,9 +63,9 @@ const ShippingAddress = () => {
         </View>
 
         <View style={styles.section}>
-          <CheckoutSubHeading title="PAYMENT METHOD" />
+          <CheckoutSubHeading title={t('paymentMethod')} />
           <ActionRow
-            title="Select payment method"
+            title={t('selectPaymentMethod')}
             Icon={
               <ICONS.DOWN width={24} height={24} color={Colors.titleActive} />
             }
@@ -71,14 +73,14 @@ const ShippingAddress = () => {
         </View>
 
         <View style={styles.totalRow}>
-          <Text style={styles.totalLabel}>TOTAL</Text>
+          <Text style={styles.totalLabel}>{t('total')}</Text>
           <Text style={styles.totalValue}>$240</Text>
         </View>
       </ScrollView>
 
       <BottomButton
         Icon={<ICONS.WHITE_BAG width={24} height={24} color={Colors.white} />}
-        title="PLACE ORDER"
+        title={t('placeOrder')}
       />
     </SafeAreaView>
   );

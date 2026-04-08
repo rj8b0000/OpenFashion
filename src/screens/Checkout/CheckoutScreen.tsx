@@ -10,10 +10,12 @@ import { productsData } from '../../constants/productsData';
 import CheckoutSectionTitle from './Component/CheckoutSectionTitle';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../../navigator/types';
+import { useTranslation } from 'react-i18next';
 
 const CheckoutScreen = () => {
   const product = productsData[0];
   const navigation = useNavigation<RootStackNavigationProp>();
+  const { t } = useTranslation();
   return (
     <SafeAreaView edges={['top']} style={styles.container}>
       <Header />
@@ -21,7 +23,7 @@ const CheckoutScreen = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <CheckoutSectionTitle title="CHECKOUT" />
+        <CheckoutSectionTitle title={t('checkoutTitle')} />
 
         <View style={styles.productContainer}>
           <ProductComponent item={product} isGrid={false} isCheckout={true} />
@@ -31,7 +33,7 @@ const CheckoutScreen = () => {
           <Pressable style={styles.row}>
             <View style={styles.rowLeft}>
               <ICONS.PROMO width={24} height={24} color={Colors.label} />
-              <Text style={styles.rowText}>Add promo code</Text>
+              <Text style={styles.rowText}>{t('addPromoCode')}</Text>
             </View>
           </Pressable>
           <View style={styles.divider} />
@@ -39,22 +41,22 @@ const CheckoutScreen = () => {
           <Pressable style={styles.row}>
             <View style={styles.rowLeft}>
               <ICONS.DELIVERY width={24} height={24} color={Colors.label} />
-              <Text style={styles.rowText}>Delivery</Text>
+              <Text style={styles.rowText}>{t('delivery')}</Text>
             </View>
-            <Text style={styles.rowRightText}>Free</Text>
+            <Text style={styles.rowRightText}>{t('free')}</Text>
           </Pressable>
           <View style={styles.divider} />
         </View>
 
         <View style={styles.totalSection}>
-          <Text style={styles.estTotalText}>EST. TOTAL</Text>
+          <Text style={styles.estTotalText}>{t('estTotal')}</Text>
           <Text style={styles.totalPriceText}>$240</Text>
         </View>
       </ScrollView>
 
       <BottomButton
         Icon={<ICONS.WHITE_BAG width={24} height={24} color={Colors.white} />}
-        title="CHECKOUT"
+        title={t('checkoutTitle')}
         onPress={() => navigation.navigate('ShippingAddress')}
       />
     </SafeAreaView>

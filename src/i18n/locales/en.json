@@ -55,5 +55,18 @@
   "shippingDate": "09/11/2021 - 12/11/2021.",
   "codPolicy": "COD Policy",
   "returnPolicy": "Return Policy",
-  "youMayAlsoLike": "you may also like"
+  "youMayAlsoLike": "you may also like",
+  "checkoutTitle": "CHECKOUT",
+  "addPromoCode": "Add promo code",
+  "delivery": "Delivery",
+  "free": "Free",
+  "estTotal": "EST. TOTAL",
+  "total": "TOTAL",
+  "shippingAddress": "SHIPPING ADDRESS",
+  "addShippingAddress": "Add shipping address",
+  "shippingMethod": "SHIPPING METHOD",
+  "pickupAtStore": "Pickup at store",
+  "paymentMethod": "PAYMENT METHOD",
+  "selectPaymentMethod": "Select payment method",
+  "placeOrder": "PLACE ORDER"
 }
