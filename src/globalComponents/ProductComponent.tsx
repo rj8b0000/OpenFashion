@@ -7,7 +7,7 @@ import responsive from '../styles/responsive';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../navigator/types';
 
-const ProductComponent = ({ item, isGrid }: any) => {
+const ProductComponent = ({ item, isGrid, isCheckout }: any) => {
   const { t } = useTranslation();
   const navigation = useNavigation<RootStackNavigationProp>();
   return (
@@ -56,7 +56,7 @@ const ProductComponent = ({ item, isGrid }: any) => {
                 },
               ]}
             >
-              {item.name}
+              {t(item.name)}
             </Text>
             <Text
               style={[
@@ -68,11 +68,25 @@ const ProductComponent = ({ item, isGrid }: any) => {
             >
               {item.description}
             </Text>
+
+            {isCheckout && (
+              <View style={styles.checkoutCounterContainer}>
+                <Pressable style={styles.counterBtn}>
+                  <ICONS.MINUS width={12} height={12} />
+                </Pressable>
+                <Text style={styles.counterValue}>1</Text>
+                <Pressable style={styles.counterBtn}>
+                  <ICONS.PLUS_CHECKOUT width={12} height={12} />
+                </Pressable>
+              </View>
+            )}
+
             <Text
               style={[
                 styles.priceText,
                 {
                   fontSize: isGrid ? 18 : 20,
+                  marginTop: isCheckout ? '4%' : '2%',
                 },
               ]}
             >
@@ -80,7 +94,7 @@ const ProductComponent = ({ item, isGrid }: any) => {
             </Text>
           </View>
 
-          {!isGrid && (
+          {!isGrid && !isCheckout && (
             <View style={styles.listViewDetails}>
               <View style={styles.ratingContainer}>
                 <ICONS.STAR width={18} height={18} />
@@ -203,5 +217,25 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 8,
     right: 8,
+  },
+  checkoutCounterContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+    marginTop: '4%',
+  },
+  counterBtn: {
+    padding: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#F9F9F9',
+  },
+  counterValue: {
+    fontFamily: FontFamily.regular,
+    fontSize: 16,
+    color: '#333',
   },
 });

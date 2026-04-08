@@ -55,13 +55,6 @@ const RecommendedProducts = () => {
           }
         />
       </View>
-      <TouchableOpacity
-        style={styles.exploreMore}
-        onPress={() => navigation.navigate('Category')}
-      >
-        <Text style={Typography.bodyLarge}>{t('exploreMore')}</Text>
-        <ICONS.FORWARD_ARROW />
-      </TouchableOpacity>
     </View>
   );
 };

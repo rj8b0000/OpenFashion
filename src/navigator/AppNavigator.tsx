@@ -9,6 +9,8 @@ import Menu from '../globalComponents/Menu';
 import CategoryScreen from '../screens/Category/CategoryScreen';
 import { RootStackParamList } from './types';
 import ProductDetailScreen from '../screens/Products/ProductDetailScreen';
+import CheckoutScreen from '../screens/Checkout/CheckoutScreen';
+import ShippingAddress from '../screens/Checkout/ShippingAddress';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -25,6 +27,8 @@ const MainStack = () => (
     <Stack.Screen name="Blog" component={BlogScreen} />
     <Stack.Screen name="Category" component={CategoryScreen} />
     <Stack.Screen name="PDP" component={ProductDetailScreen} />
+    <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
+    <Stack.Screen name="ShippingAddress" component={ShippingAddress} />
   </Stack.Navigator>
 );
 

@@ -18,10 +18,13 @@ import Materials from './Component/Materials';
 import CareText from './Component/CareText';
 import CareAccordian from './Component/CareAccordian';
 import RecommendedProducts from './Component/RecommendedProducts';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../../navigator/types';
 
 const ProductDetailScreen = () => {
   const [sliderHeight, setSliderHeight] = useState(0);
   const { t } = useTranslation();
+  const navigation = useNavigation<RootStackNavigationProp>();
   return (
     <SafeAreaView edges={['top']} style={[GlobalStyles.container]}>
       <Header />
@@ -46,6 +49,7 @@ const ProductDetailScreen = () => {
             <ICONS.WHITE_PLUS width={24} height={24} color={Colors.white} />
           }
           title={t('addToBasket').toUpperCase()}
+          onPress={() => navigation.navigate('CheckoutScreen')}
         />
         <Materials />
         <CareText />

@@ -8,11 +8,13 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
   Text,
+  TouchableOpacity,
 } from 'react-native';
 import { Colors, Spacing, Typography } from '../../../theme';
 import { useTranslation } from 'react-i18next';
 import responsive from '../../../styles/responsive';
 import ICONS from '../../../constants/svgPath';
+import ViewFullImage from './ViewFullImage';
 
 type CusomSliderProps = {
   sliderData: any[];
@@ -22,6 +24,8 @@ const { width } = Dimensions.get('window');
 
 const ProductImageSlider = ({ sliderData = [] }: CusomSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<any>(null);
   const flatRef = useRef<FlatList>(null);
   const { t } = useTranslation();
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -42,9 +46,15 @@ const ProductImageSlider = ({ sliderData = [] }: CusomSliderProps) => {
         renderItem={({ item }) => (
           <View style={styles.card}>
             <Image source={item} style={styles.image} />
-            <View style={styles.enlargeBtn}>
+            <TouchableOpacity 
+              style={styles.enlargeBtn}
+              onPress={() => {
+                setSelectedImage(item);
+                setIsModalVisible(true);
+              }}
+            >
               <ICONS.ENLARGE_IMAGE width={40} height={40} />
-            </View>
+            </TouchableOpacity>
           </View>
         )}
       />
@@ -58,6 +68,13 @@ const ProductImageSlider = ({ sliderData = [] }: CusomSliderProps) => {
           />
         ))}
       </View>
+
+      {/* Full Screen Modal */}
+      <ViewFullImage
+        visible={isModalVisible}
+        image={selectedImage}
+        onClose={() => setIsModalVisible(false)}
+      />
     </View>
   );
 };

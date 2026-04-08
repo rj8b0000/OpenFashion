@@ -45,6 +45,10 @@ import Truck from '../assets/icons/svg/Truck.svg';
 import Tag from '../assets/icons/svg/Tag.svg';
 import Refresh from '../assets/icons/svg/Refresh.svg';
 import ArrowDown from '../assets/icons/svg/ArrowDown.svg';
+import Promo from '../assets/icons/svg/Promo.svg';
+import Delivery from '../assets/icons/svg/Delivery.svg';
+import Minus from '../assets/icons/svg/Minus.svg';
+import PlusCheckout from '../assets/icons/svg/Plus_Checkout.svg';
 
 export default {
   BAG: Bag,
@@ -94,4 +98,8 @@ export default {
   TAG: Tag,
   REFRESH: Refresh,
   ARROW_DOWN: ArrowDown,
+  PROMO: Promo,
+  DELIVERY: Delivery,
+  MINUS: Minus,
+  PLUS_CHECKOUT: PlusCheckout,
 };

@@ -5,6 +5,8 @@ export type RootStackParamList = {
   Blog: undefined;
   Category: undefined;
   PDP: undefined;
+  CheckoutScreen: undefined;
+  ShippingAddress: undefined;
 };
 
 export type RootStackNavigationProp =
