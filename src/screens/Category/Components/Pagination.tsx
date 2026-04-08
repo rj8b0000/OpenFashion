@@ -50,7 +50,7 @@ const Pagination = ({
           }
         }}
       >
-        <ICONS.FORWARD_ARROW width={24} height={24} color="#333" />
+        <ICONS.FORWARD width={30} height={30} color="#333" />
       </TouchableOpacity>
     </View>
   );

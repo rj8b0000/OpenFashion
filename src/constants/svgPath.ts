@@ -33,6 +33,18 @@ import Location from '../assets/icons/svg/Location.svg';
 import Phone from '../assets/icons/svg/Phone.svg';
 import ArrowUp from '../assets/icons/svg/ArrowUp.svg';
 import Twitter from '../assets/icons/svg/Twitter.svg';
+import EnlargeImage from '../assets/icons/svg/EnlargeImage.svg';
+import Download from '../assets/icons/svg/Download.svg';
+import WhiteHeart from '../assets/icons/svg/WhiteHeart.svg';
+import WhitePlus from '../assets/icons/svg/WhitePlus.svg';
+import DoNotBleach from '../assets/icons/svg/DoNotBleach.svg';
+import DoNotTumbleDry from '../assets/icons/svg/DoNotTumbleDry.svg';
+import DoNotWash from '../assets/icons/svg/DoNotWash.svg';
+import IronLowTemp from '../assets/icons/svg/IronLowTemp.svg';
+import Truck from '../assets/icons/svg/Truck.svg';
+import Tag from '../assets/icons/svg/Tag.svg';
+import Refresh from '../assets/icons/svg/Refresh.svg';
+import ArrowDown from '../assets/icons/svg/ArrowDown.svg';
 
 export default {
   BAG: Bag,
@@ -70,4 +82,16 @@ export default {
   LOCATION: Location,
   PHONE: Phone,
   UP: ArrowUp,
+  ENLARGE_IMAGE: EnlargeImage,
+  DOWNLOAD: Download,
+  WHITE_HEART: WhiteHeart,
+  WHITE_PLUS: WhitePlus,
+  DO_NOT_BLEACH: DoNotBleach,
+  DO_NOT_TUMBLE_DRY: DoNotTumbleDry,
+  DO_NOT_WASH: DoNotWash,
+  IRON_LOW_TEMP: IronLowTemp,
+  TRUCK: Truck,
+  TAG: Tag,
+  REFRESH: Refresh,
+  ARROW_DOWN: ArrowDown,
 };

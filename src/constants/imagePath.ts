@@ -27,4 +27,9 @@ export default {
   FOLLOW_2: require('../assets/images/FollowUs/Image2.png'),
   FOLLOW_3: require('../assets/images/FollowUs/Image3.png'),
   FOLLOW_4: require('../assets/images/FollowUs/Image4.png'),
+  PDP_1: require('../assets/images/PDPImages/Image1.png'),
+  PDP_2: require('../assets/images/PDPImages/Image2.png'),
+  PDP_3: require('../assets/images/PDPImages/Image3.png'),
+  PDP_4: require('../assets/images/PDPImages/Image4.png'),
+  PDP_5: require('../assets/images/PDPImages/Image5.png'),
 };

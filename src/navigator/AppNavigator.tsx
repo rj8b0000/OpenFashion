@@ -8,6 +8,7 @@ import BlogScreen from '../screens/Blog/BlogScreen';
 import Menu from '../globalComponents/Menu';
 import CategoryScreen from '../screens/Category/CategoryScreen';
 import { RootStackParamList } from './types';
+import ProductDetailScreen from '../screens/Products/ProductDetailScreen';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -16,22 +17,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const Drawer = createDrawerNavigator();
 
 const MainStack = () => (
-  <Stack.Navigator initialRouteName="Home">
-    <Stack.Screen
-      name="Home"
-      component={HomeScreen}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name="Blog"
-      component={BlogScreen}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name="Category"
-      component={CategoryScreen}
-      options={{ headerShown: false }}
-    />
+  <Stack.Navigator
+    initialRouteName="Home"
+    screenOptions={{ headerShown: false }}
+  >
+    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Blog" component={BlogScreen} />
+    <Stack.Screen name="Category" component={CategoryScreen} />
+    <Stack.Screen name="PDP" component={ProductDetailScreen} />
   </Stack.Navigator>
 );
 

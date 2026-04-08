@@ -4,6 +4,8 @@ export type RootStackParamList = {
   Home: undefined;
   Blog: undefined;
   Category: undefined;
+  PDP: undefined;
 };
 
-export type RootStackNavigationProp = NativeStackNavigationProp<RootStackParamList>;
+export type RootStackNavigationProp =
+  NativeStackNavigationProp<RootStackParamList>;

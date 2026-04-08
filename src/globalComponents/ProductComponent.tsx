@@ -1,14 +1,17 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import ICONS from '../../../constants/svgPath';
-import { FontFamily } from '../../../theme/typography';
-import responsive from '../../../styles/responsive';
+import ICONS from '../constants/svgPath';
+import { FontFamily } from '../theme/typography';
+import responsive from '../styles/responsive';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../navigator/types';
 
 const ProductComponent = ({ item, isGrid }: any) => {
   const { t } = useTranslation();
+  const navigation = useNavigation<RootStackNavigationProp>();
   return (
-    <View
+    <Pressable
       style={[
         styles.container,
         {
@@ -16,6 +19,7 @@ const ProductComponent = ({ item, isGrid }: any) => {
           height: isGrid ? responsive.height(290) : responsive.height(180),
         },
       ]}
+      onPress={() => navigation.navigate('PDP')}
     >
       <View
         style={[
@@ -103,7 +107,7 @@ const ProductComponent = ({ item, isGrid }: any) => {
           )}
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

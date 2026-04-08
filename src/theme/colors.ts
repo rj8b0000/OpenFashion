@@ -17,5 +17,6 @@ export const Colors = {
   infoBg: '#F2F2F2',
   loadMoreBtnBorder: '#DEDEDE',
   footerCopyRightBg: '#e6e1e1ff',
+  plpPaginationGrey: '#888888',
 };
 export default Colors;

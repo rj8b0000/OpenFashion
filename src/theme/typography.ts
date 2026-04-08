@@ -30,6 +30,9 @@ export const Typography = {
   filterBarText: makeTextStyle(FontFamily.regular, 14, 18, 0),
   blogTitle: makeTextStyle(FontFamily.regular, 14, 20, 0),
   blogDescription: makeTextStyle(FontFamily.regular, 14, 24, 0),
+  productTitle: makeTextStyle(FontFamily.regular, 16, 24, 4),
+  productDescription: makeTextStyle(FontFamily.regular, 16, 24, 0),
+  productPrice: makeTextStyle(FontFamily.regular, 18, 24, 0),
 };
 
 export default Typography;

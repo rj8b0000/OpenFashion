@@ -6,7 +6,7 @@ import { GlobalStyles } from '../../theme/styles';
 import Header from '../../globalComponents/Header';
 import Footer from '../../globalComponents/Footer';
 import { categoryData } from '../../constants/categoryData';
-import ProductComponent from './Components/ProductComponent';
+import ProductComponent from '../../globalComponents/ProductComponent';
 import FilterBar from './Components/FilterBar';
 import Pagination from './Components/Pagination';
 import FilterModal from './Components/FilterModal';
@@ -23,18 +23,19 @@ const CategoryScreen = () => {
   const itemsPerPage = 4;
 
   const categories = Array.from(
-    new Set(categoryData.map(item => item.category))
+    new Set(categoryData.map(item => item.category)),
   );
 
-  const filteredData = selectedCategories.length > 0
-    ? categoryData.filter(item => selectedCategories.includes(item.category))
-    : categoryData;
+  const filteredData =
+    selectedCategories.length > 0
+      ? categoryData.filter(item => selectedCategories.includes(item.category))
+      : categoryData;
 
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
 
   const paginatedData = filteredData.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const removeCategory = (category: string) => {
