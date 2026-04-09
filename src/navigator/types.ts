@@ -10,6 +10,8 @@ export type RootStackParamList = {
   AddNewAddress: undefined;
   AddNewCard: undefined;
   FinalCheckout: undefined;
+  Search: undefined;
+  SearchView: { query: string };
 };
 
 export type RootStackNavigationProp =

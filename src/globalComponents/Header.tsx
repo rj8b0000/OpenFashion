@@ -35,13 +35,19 @@ const Header: React.FC<IHeaderProps> = ({ animatedStyle }) => {
       </View>
 
       <View style={styles.rightContainer}>
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => navigation.navigate('Search')}
+        >
           <ICONS.SEARCH
             width={responsive.width(26)}
             height={responsive.width(26)}
           />
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.7} style={{ marginLeft: responsive.width(14) }}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={{ marginLeft: responsive.width(14) }}
+        >
           <ICONS.BAG
             width={responsive.width(24)}
             height={responsive.width(24)}

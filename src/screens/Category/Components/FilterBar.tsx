@@ -5,22 +5,29 @@ import { FontFamily } from '../../../theme/typography';
 import ICONS from '../../../constants/svgPath';
 import { TouchableOpacity } from 'react-native';
 import { IFilterBarProps } from '../../../types';
+import { Spacing } from '../../../theme';
 
 const FilterBar = ({
   isGrid,
   setIsGrid,
   onFilterPress,
   totalItems,
+  title,
+  hideNewBadge,
 }: IFilterBarProps) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{t('categoryApparelCount', { count: totalItems })}</Text>
+      <Text style={styles.title} numberOfLines={1}>
+        {title || t('categoryApparelCount', { count: totalItems })}
+      </Text>
       <View style={styles.rightSection}>
+        {/* {!hideNewBadge && ( */}
         <View style={styles.newBadge}>
           <Text style={styles.newBadgeText}>{t('categoryNew')}</Text>
           <ICONS.DOWN width={8} height={8} />
         </View>
+        {/* )} */}
         <TouchableOpacity
           style={styles.iconWrapper}
           onPress={() => {
@@ -54,6 +61,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontFamily: FontFamily.regular,
+    flex: 1,
+    marginRight: Spacing.sm,
   },
   rightSection: {
     width: '46%',

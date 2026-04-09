@@ -92,5 +92,15 @@
   "paymentId": "Payment ID",
   "rateYourPurchase": "Rate your purchase",
   "submit": "SUBMIT",
-  "backToHome": "BACK TO HOME"
+  "backToHome": "BACK TO HOME",
+  "recentSearch": "Recent search",
+  "popularSearchTerms": "Popular search terms",
+  "searchItems": "Search items",
+  "trend": "Trend",
+  "dress_search": "Dress",
+  "bag_search": "Bag",
+  "tshirt_search": "Tshirt",
+  "beauty": "Beauty",
+  "accessories": "Accessories",
+  "searchResultsCount": "{{count}} RESULT OF {{query}}"
 }

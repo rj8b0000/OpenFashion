@@ -59,6 +59,8 @@ export interface IFilterBarProps {
   setIsGrid: (value: boolean | ((prev: boolean) => boolean)) => void;
   onFilterPress?: () => void;
   totalItems: number;
+  title?: string;
+  hideNewBadge?: boolean;
 }
 
 export interface IProductHomeComponentProps {
@@ -126,4 +128,16 @@ export interface IBlog {
 
 export interface IBlogComponentProps {
   item: IBlog;
+}
+
+export interface ISearchInputProps {
+  value: string;
+  onChangeText: (text: string) => void;
+  onClear: () => void;
+  onSubmitEditing?: () => void;
+}
+
+export interface ISearchHeaderProps {
+  onClose: () => void;
+  searchQuery: string;
 }
