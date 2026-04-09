@@ -12,11 +12,12 @@ interface AddressCardProps {
     zipCode: string;
     phoneNumber: string;
   };
+  containerStyle?: any;
 }
 
-const AddressCard: React.FC<AddressCardProps> = ({ item }) => {
+const AddressCard: React.FC<AddressCardProps> = ({ item, containerStyle }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <Text style={styles.titleText}>
         {item.firstName} {item.lastName}
       </Text>

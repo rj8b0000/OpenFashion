@@ -1,10 +1,9 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import responsive from '../../../styles/responsive';
-import IMAGE from '../../../constants/imagePath';
 import { Colors, Spacing, Typography } from '../../../theme';
 
-const BlogComponent = ({ item }) => {
+const BlogComponent = ({ item }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

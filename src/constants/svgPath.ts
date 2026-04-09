@@ -49,6 +49,12 @@ import Promo from '../assets/icons/svg/Promo.svg';
 import Delivery from '../assets/icons/svg/Delivery.svg';
 import Minus from '../assets/icons/svg/Minus.svg';
 import PlusCheckout from '../assets/icons/svg/Plus_Checkout.svg';
+import MasterCard from '../assets/icons/svg/MasterCard.svg';
+import PaymentCompleteTick from '../assets/icons/svg/PaymentCompleteTick.svg';
+import Sad from '../assets/icons/svg/Sad.svg';
+import Happy from '../assets/icons/svg/Happy.svg';
+import LoveIt from '../assets/icons/svg/LoveIt.svg';
+import Cross from '../assets/icons/svg/Cross.svg';
 
 export default {
   BAG: Bag,
@@ -102,4 +108,10 @@ export default {
   DELIVERY: Delivery,
   MINUS: Minus,
   PLUS_CHECKOUT: PlusCheckout,
+  MASTER_CARD: MasterCard,
+  PAYMENT_COMPLETE_TICK: PaymentCompleteTick,
+  SAD: Sad,
+  HAPPY: Happy,
+  LOVE_IT: LoveIt,
+  CROSS: Cross,
 };

@@ -7,7 +7,7 @@ import ICONS from '../../constants/svgPath';
 import ProductComponent from '../../globalComponents/ProductComponent';
 import BottomButton from './Component/BottomButton';
 import { productsData } from '../../constants/productsData';
-import CheckoutSectionTitle from './Component/CheckoutSectionTitle';
+import CheckoutSectionTitle from '../../globalComponents/CheckoutSectionTitle';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../../navigator/types';
 import { useTranslation } from 'react-i18next';

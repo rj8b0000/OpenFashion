@@ -47,7 +47,11 @@ const ProductComponent = ({ item, isGrid, isCheckout }: any) => {
             },
           ]}
         >
-          <View>
+          <View
+            style={
+              isCheckout ? { justifyContent: 'space-between', gap: '4%' } : null
+            }
+          >
             <Text
               style={[
                 styles.nameText,
@@ -58,16 +62,18 @@ const ProductComponent = ({ item, isGrid, isCheckout }: any) => {
             >
               {t(item.name)}
             </Text>
-            <Text
-              style={[
-                styles.descriptionText,
-                {
-                  fontSize: isGrid ? 14 : 15,
-                },
-              ]}
-            >
-              {item.description}
-            </Text>
+            {isCheckout ? null : (
+              <Text
+                style={[
+                  styles.descriptionText,
+                  {
+                    fontSize: isGrid ? 14 : 15,
+                  },
+                ]}
+              >
+                {item.description}
+              </Text>
+            )}
 
             {isCheckout && (
               <View style={styles.checkoutCounterContainer}>

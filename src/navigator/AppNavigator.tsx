@@ -12,6 +12,8 @@ import ProductDetailScreen from '../screens/Products/ProductDetailScreen';
 import CheckoutScreen from '../screens/Checkout/CheckoutScreen';
 import ShippingAddress from '../screens/Checkout/screens/ShippingAddress';
 import AddNewAddress from '../screens/Checkout/screens/AddNewAddress';
+import AddNewCard from '../screens/Checkout/screens/AddNewCard';
+import FinalCheckout from '../screens/Checkout/screens/FinalCheckout';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -31,6 +33,8 @@ const MainStack = () => (
     <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
     <Stack.Screen name="ShippingAddress" component={ShippingAddress} />
     <Stack.Screen name="AddNewAddress" component={AddNewAddress} />
+    <Stack.Screen name="AddNewCard" component={AddNewCard} />
+    <Stack.Screen name="FinalCheckout" component={FinalCheckout} />
   </Stack.Navigator>
 );
 

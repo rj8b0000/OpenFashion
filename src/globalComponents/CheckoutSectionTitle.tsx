@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Typography, Spacing } from '../../../theme';
-import ICONS from '../../../constants/svgPath';
+import { Typography, Spacing } from '../theme';
+import ICONS from '../constants/svgPath';
 
 const CheckoutSectionTitle = ({ title }: { title: string }) => {
   return (

@@ -6,7 +6,7 @@ import Header from '../../../globalComponents/Header';
 import BottomButton from '../Component/BottomButton';
 import ICONS from '../../../constants/svgPath';
 
-import CheckoutSectionTitle from '../Component/CheckoutSectionTitle';
+import CheckoutSectionTitle from '../../../globalComponents/CheckoutSectionTitle';
 import CheckoutSubHeading from '../Component/CheckoutSubHeading';
 import ActionRow from '../Component/ActionRow';
 import AddressCard from '../Component/AddressCard';
@@ -85,6 +85,7 @@ const ShippingAddress = () => {
       <BottomButton
         Icon={<ICONS.WHITE_BAG width={24} height={24} color={Colors.white} />}
         title={t('placeOrder')}
+        onPress={() => navigation.navigate('AddNewCard')}
       />
     </SafeAreaView>
   );

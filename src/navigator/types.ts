@@ -8,6 +8,8 @@ export type RootStackParamList = {
   CheckoutScreen: undefined;
   ShippingAddress: undefined;
   AddNewAddress: undefined;
+  AddNewCard: undefined;
+  FinalCheckout: undefined;
 };
 
 export type RootStackNavigationProp =

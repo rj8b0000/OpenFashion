@@ -6,20 +6,18 @@ import Header from '../../../globalComponents/Header';
 import CheckoutSectionTitle from '../../../globalComponents/CheckoutSectionTitle';
 import CustomTextInput from '../Component/CustomTextInput';
 import BottomButton from '../Component/BottomButton';
-import ICONS from '../../../constants/svgPath';
 import { useTranslation } from 'react-i18next';
+import CardCarousel from '../Component/CardCarousel';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../../../navigator/types';
 
-const AddNewAddress = () => {
+const AddNewCard = () => {
   const { t } = useTranslation();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipCode, setZipCode] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [nameOnCard, setNameOnCard] = useState('');
+  const [cardNumber, setCardNumber] = useState('');
+  const [expDate, setExpDate] = useState('');
+  const [expMonth, setExpMonth] = useState('');
+  const [cvv, setCvv] = useState('');
   const navigation = useNavigation<RootStackNavigationProp>();
 
   return (
@@ -29,63 +27,62 @@ const AddNewAddress = () => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        <CheckoutSectionTitle title={t('addNewAddressTitle')} />
+        <CheckoutSectionTitle title={t('paymentMethod')} />
 
+        <CardCarousel
+          cards={[
+            {
+              number: cardNumber || '2365365423653698',
+              name: nameOnCard || 'Iris Watson',
+              expiry: `${expMonth}${expDate}`,
+              cvc: cvv || '123',
+            },
+          ]}
+        />
         <View style={styles.formContainer}>
-          <View style={styles.row}>
-            <CustomTextInput
-              style={styles.halfInput}
-              placeholder={t('firstName')}
-              value={firstName}
-              onChangeText={setFirstName}
-            />
-            <CustomTextInput
-              style={styles.halfInput}
-              placeholder={t('lastName')}
-              value={lastName}
-              onChangeText={setLastName}
-            />
-          </View>
           <CustomTextInput
-            placeholder={t('address')}
-            value={address}
-            onChangeText={setAddress}
+            placeholder={t('firstName')}
+            value={nameOnCard}
+            onChangeText={setNameOnCard}
+          />
+          <CustomTextInput
+            placeholder={t('cardNumber')}
+            keyboardType="numeric"
+            value={cardNumber}
+            onChangeText={setCardNumber}
           />
           <View style={styles.row}>
             <CustomTextInput
               style={styles.halfInput}
-              placeholder={t('city')}
-              value={city}
-              onChangeText={setCity}
+              placeholder={t('expMonth')}
+              value={expMonth}
+              onChangeText={setExpMonth}
             />
             <CustomTextInput
               style={styles.halfInput}
-              placeholder={t('zipCode')}
-              keyboardType="numeric"
-              value={zipCode}
-              onChangeText={setZipCode}
+              placeholder={t('expDate')}
+              value={expDate}
+              onChangeText={setExpDate}
             />
           </View>
           <CustomTextInput
-            placeholder={t('state')}
-            value={state}
-            onChangeText={setState}
-          />
-          <CustomTextInput
-            placeholder={t('phoneNumber')}
-            keyboardType="phone-pad"
-            value={phoneNumber}
-            onChangeText={setPhoneNumber}
+            placeholder={t('cvv')}
+            keyboardType="numeric"
+            value={cvv}
+            onChangeText={setCvv}
           />
         </View>
       </ScrollView>
 
-      <BottomButton title={t('addNow')} />
+      <BottomButton
+        title={t('addCard').toUpperCase()}
+        onPress={() => navigation.navigate('FinalCheckout')}
+      />
     </SafeAreaView>
   );
 };
 
-export default AddNewAddress;
+export default AddNewCard;
 
 const styles = StyleSheet.create({
   container: {
@@ -98,7 +95,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     marginTop: Spacing.lg,
-    gap: Spacing.xl, // using gap for vertical spacing between inputs
+    gap: Spacing.xl,
   },
   row: {
     flexDirection: 'row',

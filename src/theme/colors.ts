@@ -23,5 +23,8 @@ export const Colors = {
   checkoutText: '#888888',
   checkoutDescription: '#555555',
   divider: '#E0E0E0',
+  cardDot: '#ccc',
+  red: '#EB001B',
+  yellow: '#F79E1B',
 };
 export default Colors;
