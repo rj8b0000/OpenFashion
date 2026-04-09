@@ -7,7 +7,7 @@ const CheckoutSectionTitle = ({ title }: { title: string }) => {
   return (
     <View style={styles.headerTitleContainer}>
       <Text style={Typography.title}>{title}</Text>
-      <ICONS.DIVIDER style={styles.divider} />
+      <ICONS.DIVIDER />
     </View>
   );
 };
@@ -18,8 +18,5 @@ const styles = StyleSheet.create({
   headerTitleContainer: {
     alignItems: 'center',
     marginVertical: Spacing.md,
-  },
-  divider: {
-    marginTop: Spacing.sm,
   },
 });

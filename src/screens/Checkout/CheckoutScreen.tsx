@@ -93,16 +93,16 @@ const styles = StyleSheet.create({
   },
   rowText: {
     ...Typography.bodyLarge,
-    color: '#333333',
+    color: Colors.body,
     marginLeft: Spacing.md,
   },
   rowRightText: {
     ...Typography.bodyLarge,
-    color: '#333333',
+    color: Colors.body,
   },
   divider: {
     height: 1,
-    backgroundColor: '#E0E0E0',
+    backgroundColor: Colors.divider,
   },
   totalSection: {
     flexDirection: 'row',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   estTotalText: {
     ...Typography.bodyLarge,
-    color: '#333333',
+    color: Colors.body,
     letterSpacing: 2,
   },
   totalPriceText: {

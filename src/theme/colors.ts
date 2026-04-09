@@ -18,5 +18,10 @@ export const Colors = {
   loadMoreBtnBorder: '#DEDEDE',
   footerCopyRightBg: '#e6e1e1ff',
   plpPaginationGrey: '#888888',
+  checkoutBg: '#F9F9F9',
+  checkoutTitle: '#333333',
+  checkoutText: '#888888',
+  checkoutDescription: '#555555',
+  divider: '#E0E0E0',
 };
 export default Colors;

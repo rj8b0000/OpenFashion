@@ -7,6 +7,7 @@ export type RootStackParamList = {
   PDP: undefined;
   CheckoutScreen: undefined;
   ShippingAddress: undefined;
+  AddNewAddress: undefined;
 };
 
 export type RootStackNavigationProp =

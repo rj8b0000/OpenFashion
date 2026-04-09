@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
-import { Colors, Spacing, Typography } from '../../../theme';
+import { Colors, Radius, Spacing, Typography } from '../../../theme';
 
 interface ActionRowProps {
   title: string;
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#F9F9F9',
+    backgroundColor: Colors.checkoutBg,
     padding: Spacing.md,
-    borderRadius: 8,
+    borderRadius: Radius.sm,
     marginTop: Spacing.sm,
   },
   title: {
     ...Typography.bodyLarge,
-    color: '#333333',
+    color: Colors.checkoutText,
   },
 });

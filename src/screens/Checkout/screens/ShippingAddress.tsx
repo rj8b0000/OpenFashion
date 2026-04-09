@@ -1,19 +1,22 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors, Spacing, Typography } from '../../theme';
-import Header from '../../globalComponents/Header';
-import BottomButton from './Component/BottomButton';
-import ICONS from '../../constants/svgPath';
+import { Colors, Spacing, Typography } from '../../../theme';
+import Header from '../../../globalComponents/Header';
+import BottomButton from '../Component/BottomButton';
+import ICONS from '../../../constants/svgPath';
 
-import CheckoutSectionTitle from './Component/CheckoutSectionTitle';
-import CheckoutSubHeading from './Component/CheckoutSubHeading';
-import ActionRow from './Component/ActionRow';
-import AddressCard from './Component/AddressCard';
+import CheckoutSectionTitle from '../Component/CheckoutSectionTitle';
+import CheckoutSubHeading from '../Component/CheckoutSubHeading';
+import ActionRow from '../Component/ActionRow';
+import AddressCard from '../Component/AddressCard';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../../../navigator/types';
 
 const ShippingAddress = () => {
   const { t } = useTranslation();
+  const navigation = useNavigation<RootStackNavigationProp>();
   const address = [
     {
       id: '1',
@@ -49,6 +52,7 @@ const ShippingAddress = () => {
             Icon={
               <ICONS.PLUS width={20} height={20} color={Colors.titleActive} />
             }
+            onPress={() => navigation.navigate('AddNewAddress')}
           />
         </View>
 
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
   },
   totalLabel: {
     ...Typography.bodyLarge,
-    color: '#333333',
+    color: Colors.body,
     letterSpacing: 2,
   },
   totalValue: {

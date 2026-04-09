@@ -21,15 +21,15 @@ const styles = StyleSheet.create({
     // bottom: 0,
     height: '8%',
     width: '100%',
-    backgroundColor: '#000',
+    backgroundColor: Colors.black,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   bottomBarText: {
     fontFamily: FontFamily.regular,
-    fontSize: 18,
+    fontSize: responsive.fontSize(18),
     letterSpacing: 2,
-    color: '#fff',
+    color: Colors.white,
   },
 });
