@@ -96,18 +96,7 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
     <SafeAreaView style={styles.safeArea}>
       <View style={[styles.container, isTablet && styles.tabletContainer]}>
         {/* Header */}
-        <TouchableOpacity
-          style={styles.closeButton}
-          onPress={onClose}
-          hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
-        >
-          <View style={{ transform: [{ rotate: '45deg' }] }}>
-            <ICONS.PLUS
-              width={responsive.width(24)}
-              height={responsive.width(24)}
-            />
-          </View>
-        </TouchableOpacity>
+        <View style={styles.spacer}></View>
 
         {/* Tabs */}
         <View style={styles.tabsHeader}>
@@ -186,7 +175,13 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 navigation.navigate('OurStory');
               }}
             >
-              <Text style={[Typography.bodyLarge, styles.contactText, { marginLeft: 0 }]}>
+              <Text
+                style={[
+                  Typography.bodyLarge,
+                  styles.contactText,
+                  { marginLeft: 0 },
+                ]}
+              >
                 {t('ourStoryTitle')}
               </Text>
             </TouchableOpacity>
@@ -198,7 +193,13 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 navigation.navigate('ContactUs');
               }}
             >
-              <Text style={[Typography.bodyLarge, styles.contactText, { marginLeft: 0 }]}>
+              <Text
+                style={[
+                  Typography.bodyLarge,
+                  styles.contactText,
+                  { marginLeft: 0 },
+                ]}
+              >
                 {t('contactUsTitle')}
               </Text>
             </TouchableOpacity>
@@ -249,9 +250,8 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: isTablet ? Spacing.md : Spacing.xl,
   },
-  closeButton: {
-    marginTop: Spacing.md,
-    marginBottom: Spacing.lg,
+  spacer: {
+    height: responsive.height(30),
   },
   tabsHeader: {
     flexDirection: 'row',
