@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -23,6 +23,7 @@ import Error404Screen from '../screens/General/Error404Screen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
 import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
+import SplashScreen from '../screens/Splash/SplashScreen';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -61,11 +62,21 @@ const MainStack = () => (
 );
 
 const NavigationStack = () => {
+  const [isSplashVisible, setIsSplashVisible] = useState(true);
   const { isAuthenticated } = useSelector((state: any) => state.auth);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsSplashVisible(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {!isAuthenticated ? (
+      {isSplashVisible ? (
+        <Stack.Screen name="Splash" component={SplashScreen} />
+      ) : !isAuthenticated ? (
         <Stack.Screen name="Auth" component={AuthStack} />
       ) : (
         <Stack.Screen name="App" component={AppDrawer} />

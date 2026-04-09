@@ -20,6 +20,7 @@ export type RootStackParamList = {
   ForgotPassword: undefined;
   Auth: undefined;
   App: undefined;
+  Splash: undefined;
 };
 
 export type RootStackNavigationProp =
