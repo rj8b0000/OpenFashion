@@ -16,6 +16,9 @@ import AddNewCard from '../screens/Checkout/screens/AddNewCard';
 import FinalCheckout from '../screens/Checkout/screens/FinalCheckout';
 import SearchScreen from '../screens/Search/SearchScreen';
 import SearchViewScreen from '../screens/Search/screens/SearchViewScreen';
+import OurStoryScreen from '../screens/General/OurStoryScreen';
+import ContactUsScreen from '../screens/General/ContactUsScreen';
+import Error404Screen from '../screens/General/Error404Screen';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -39,6 +42,9 @@ const MainStack = () => (
     <Stack.Screen name="FinalCheckout" component={FinalCheckout} />
     <Stack.Screen name="Search" component={SearchScreen} />
     <Stack.Screen name="SearchView" component={SearchViewScreen} />
+    <Stack.Screen name="OurStory" component={OurStoryScreen} />
+    <Stack.Screen name="ContactUs" component={ContactUsScreen} />
+    <Stack.Screen name="Error404" component={Error404Screen} />
   </Stack.Navigator>
 );
 

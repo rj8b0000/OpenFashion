@@ -12,6 +12,9 @@ export type RootStackParamList = {
   FinalCheckout: undefined;
   Search: undefined;
   SearchView: { query: string };
+  OurStory: undefined;
+  ContactUs: undefined;
+  Error404: undefined;
 };
 
 export type RootStackNavigationProp =

@@ -16,6 +16,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Dimensions } from 'react-native';
 import { IMenuProps } from '../types';
 
+import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
 
@@ -26,6 +29,8 @@ if (Platform.OS === 'android') {
 }
 
 const Menu: React.FC<IMenuProps> = ({ onClose }) => {
+  const { t } = useTranslation();
+  const navigation = useNavigation<any>();
   const [activeTab, setActiveTab] = useState<'women' | 'man' | 'kids'>('women');
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
@@ -173,6 +178,30 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 Store locator
               </Text>
             </View>
+
+            <TouchableOpacity
+              style={styles.contactItem}
+              onPress={() => {
+                onClose();
+                navigation.navigate('OurStory');
+              }}
+            >
+              <Text style={[Typography.bodyLarge, styles.contactText, { marginLeft: 0 }]}>
+                {t('ourStoryTitle')}
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.contactItem}
+              onPress={() => {
+                onClose();
+                navigation.navigate('ContactUs');
+              }}
+            >
+              <Text style={[Typography.bodyLarge, styles.contactText, { marginLeft: 0 }]}>
+                {t('contactUsTitle')}
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {/* Divider and Socials */}
@@ -274,6 +303,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingVertical: Spacing.md,
+  },
+  staticMenuItem: {
     paddingVertical: Spacing.md,
   },
   menuItemText: {

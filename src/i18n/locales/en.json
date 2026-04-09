@@ -102,5 +102,19 @@
   "tshirt_search": "Tshirt",
   "beauty": "Beauty",
   "accessories": "Accessories",
-  "searchResultsCount": "{{count}} RESULT OF {{query}}"
+  "searchResultsCount": "{{count}} RESULT OF {{query}}",
+  "ourStoryTitle": "OUR STORY",
+  "ourStoryDescription1": "Open Fashion - Free Ecommerce UI Kit is a free download UI kit. You can open Open Fashion - Free Ecommerce UI Kit file by Figma.",
+  "ourStoryDescription2": "Create stunning shop with bulletproof guidelines and thoughtful components. Its library contains more than 50+ components supporting Light & Dark Mode and 60+ ready to use mobile screens.",
+  "signUpTitle": "SIGN UP",
+  "signUpDescription": "Receive early access to new arrivals, sales, exclusive content, events and much more!",
+  "emailAddress": "Email address",
+  "contactUsTitle": "CONTACT US",
+  "chatDescription": "Need an ASAP answer? Contact us via chat, 24/7! For existing furniture orders, please call us.",
+  "chatWithUs": "CHAT WITH US",
+  "textDescription": "You can text us at 800-309-2622 — or click on the “text us” link below on your mobile device. Please allow the system to acknowledge a simple greeting (even “Hi” will do!) before providing your question/order details. Consent is not required for any purchase. Message and data rates may apply. Text messaging may not be available via all carriers.",
+  "textUs": "TEXT US",
+  "socialDescription": "To send us a private or direct message, like @Open Fashion on Facebook or follow us on Twitter. We’ll get back to you ASAP. Please include your name, order number, and email address for a faster response!",
+  "pageNotFound": "PAGE NOT FOUND",
+  "pageNotFoundDescription": "We can't find the page you looking for, it will return to the"
 }

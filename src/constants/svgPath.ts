@@ -55,6 +55,10 @@ import Sad from '../assets/icons/svg/Sad.svg';
 import Happy from '../assets/icons/svg/Happy.svg';
 import LoveIt from '../assets/icons/svg/LoveIt.svg';
 import Cross from '../assets/icons/svg/Cross.svg';
+import Chat from '../assets/icons/svg/Chat.svg';
+import Mail from '../assets/icons/svg/Mail.svg';
+import Twitter_ContactUS from '../assets/icons/svg/Twitter_ContactUS.svg';
+import NotFound from '../assets/icons/svg/NotFound.svg';
 
 export default {
   BAG: Bag,
@@ -114,4 +118,8 @@ export default {
   HAPPY: Happy,
   LOVE_IT: LoveIt,
   CROSS: Cross,
+  CHAT: Chat,
+  MAIL: Mail,
+  TWITTER_CONTACTUS: Twitter_ContactUS,
+  NOT_FOUND: NotFound,
 };
