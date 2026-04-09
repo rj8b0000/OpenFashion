@@ -15,6 +15,11 @@ export type RootStackParamList = {
   OurStory: undefined;
   ContactUs: undefined;
   Error404: undefined;
+  Login: undefined;
+  Register: undefined;
+  ForgotPassword: undefined;
+  Auth: undefined;
+  App: undefined;
 };
 
 export type RootStackNavigationProp =

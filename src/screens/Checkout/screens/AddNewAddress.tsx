@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Spacing } from '../../../theme';
 import Header from '../../../globalComponents/Header';
 import CheckoutSectionTitle from '../../../globalComponents/CheckoutSectionTitle';
-import CustomTextInput from '../Component/CustomTextInput';
+import CustomTextInput from '../../../globalComponents/CustomTextInput';
 import BottomButton from '../Component/BottomButton';
 import ICONS from '../../../constants/svgPath';
 import { useTranslation } from 'react-i18next';

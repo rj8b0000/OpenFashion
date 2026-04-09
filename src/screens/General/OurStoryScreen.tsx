@@ -8,7 +8,7 @@ import PageHeader from '../../globalComponents/PageHeader';
 import { Colors, Spacing, Typography } from '../../theme';
 import IMAGES from '../../constants/imagePath';
 import responsive from '../../styles/responsive';
-import CustomTextInput from '../Checkout/Component/CustomTextInput';
+import CustomTextInput from '../../globalComponents/CustomTextInput';
 import ICONS from '../../constants/svgPath';
 import { GlobalStyles } from '../../theme/styles';
 
