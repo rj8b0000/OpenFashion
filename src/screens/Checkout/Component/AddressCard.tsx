@@ -1,21 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors, Radius, Spacing, Typography } from '../../../theme';
+import { IAddressCardProps } from '../../../types';
 
-interface AddressCardProps {
-  item: {
-    firstName: string;
-    lastName: string;
-    address: string;
-    city: string;
-    state: string;
-    zipCode: string;
-    phoneNumber: string;
-  };
-  containerStyle?: any;
-}
-
-const AddressCard: React.FC<AddressCardProps> = ({ item, containerStyle }) => {
+const AddressCard: React.FC<IAddressCardProps> = ({ item, containerStyle }) => {
   return (
     <View style={[styles.container, containerStyle]}>
       <Text style={styles.titleText}>

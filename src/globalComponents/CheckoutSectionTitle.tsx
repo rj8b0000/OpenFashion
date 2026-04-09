@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Typography, Spacing } from '../theme';
 import ICONS from '../constants/svgPath';
+import { ITitleProps } from '../types';
 
-const CheckoutSectionTitle = ({ title }: { title: string }) => {
+const CheckoutSectionTitle = ({ title }: ITitleProps) => {
   return (
     <View style={styles.headerTitleContainer}>
       <Text style={Typography.title}>{title}</Text>

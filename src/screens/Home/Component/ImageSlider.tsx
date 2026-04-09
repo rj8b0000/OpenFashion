@@ -11,14 +11,11 @@ import {
 } from 'react-native';
 import { Colors, Spacing, Typography } from '../../../theme';
 import { useTranslation } from 'react-i18next';
-
-type CusomSliderProps = {
-  sliderData: any[];
-};
+import { ICustomSliderProps } from '../../../types';
 
 const { width } = Dimensions.get('window');
 
-const CustomSlider = ({ sliderData = [] }: CusomSliderProps) => {
+const CustomSlider = ({ sliderData = [] }: ICustomSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const flatRef = useRef<FlatList>(null);
   const { t } = useTranslation();

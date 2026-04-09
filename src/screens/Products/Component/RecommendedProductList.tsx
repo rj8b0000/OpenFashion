@@ -1,13 +1,10 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Colors, FontFamily, Typography } from '../../../theme';
-import { Product } from '../../../types';
+import { Product, INewArrivalProductsProps } from '../../../types';
 import { useTranslation } from 'react-i18next';
 
-interface NewArrivalProductsProps {
-  item: Product;
-}
-const RecommendedProductList: React.FC<NewArrivalProductsProps> = ({
+const RecommendedProductList: React.FC<INewArrivalProductsProps> = ({
   item,
 }) => {
   const { t } = useTranslation();

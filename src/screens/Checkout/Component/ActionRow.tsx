@@ -1,14 +1,9 @@
 import React from 'react';
 import { Pressable, Text, StyleSheet, View } from 'react-native';
 import { Colors, Radius, Spacing, Typography } from '../../../theme';
+import { IActionRowProps } from '../../../types';
 
-interface ActionRowProps {
-  title: string;
-  Icon?: React.ReactNode;
-  onPress?: () => void;
-}
-
-const ActionRow: React.FC<ActionRowProps> = ({ title, Icon, onPress }) => {
+const ActionRow: React.FC<IActionRowProps> = ({ title, Icon, onPress }) => {
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <Text style={styles.title}>{title}</Text>

@@ -5,13 +5,11 @@ import Animated from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { IHeader } from '../types';
 import responsive from '../styles/responsive';
+import { IHeaderProps } from '../types';
 
 const AnimatedView = Animated.createAnimatedComponent(View);
 
-interface HeaderProps {
-  animatedStyle?: IHeader;
-}
-const Header: React.FC<HeaderProps> = ({ animatedStyle }) => {
+const Header: React.FC<IHeaderProps> = ({ animatedStyle }) => {
   const navigation = useNavigation<any>();
 
   return (

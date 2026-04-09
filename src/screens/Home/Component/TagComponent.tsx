@@ -1,12 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Colors, Radius, Spacing, Typography } from '../../../theme';
-import { Tags } from '../../../types';
+import { Tags, ITagComponentProps } from '../../../types';
 
-interface TagComponentProps {
-  item: Tags;
-}
-const TagComponent = ({ item }: TagComponentProps) => {
+const TagComponent = ({ item }: ITagComponentProps) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>

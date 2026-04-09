@@ -3,18 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import ICONS from '../../../constants/svgPath';
 import { FontFamily } from '../../../theme/typography';
 import responsive from '../../../styles/responsive';
-
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+import { IPaginationProps } from '../../../types';
 
 const Pagination = ({
   currentPage,
   totalPages,
   onPageChange,
-}: PaginationProps) => {
+}: IPaginationProps) => {
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (

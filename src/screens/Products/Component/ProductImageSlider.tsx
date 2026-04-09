@@ -15,14 +15,11 @@ import { useTranslation } from 'react-i18next';
 import responsive from '../../../styles/responsive';
 import ICONS from '../../../constants/svgPath';
 import ViewFullImage from './ViewFullImage';
-
-type CusomSliderProps = {
-  sliderData: any[];
-};
+import { ICustomSliderProps } from '../../../types';
 
 const { width } = Dimensions.get('window');
 
-const ProductImageSlider = ({ sliderData = [] }: CusomSliderProps) => {
+const ProductImageSlider = ({ sliderData = [] }: ICustomSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<any>(null);

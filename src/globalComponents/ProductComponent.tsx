@@ -6,8 +6,9 @@ import { FontFamily } from '../theme/typography';
 import responsive from '../styles/responsive';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../navigator/types';
+import { IProductComponentProps } from '../types';
 
-const ProductComponent = ({ item, isGrid, isCheckout }: any) => {
+const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) => {
   const { t } = useTranslation();
   const navigation = useNavigation<RootStackNavigationProp>();
   return (

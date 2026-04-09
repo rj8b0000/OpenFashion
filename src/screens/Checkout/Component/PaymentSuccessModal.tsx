@@ -11,14 +11,9 @@ import { useTranslation } from 'react-i18next';
 import { Colors, Spacing, Typography, Radius } from '../../../theme';
 import ICONS from '../../../constants/svgPath';
 import responsive from '../../../styles/responsive';
+import { IPaymentSuccessModalProps } from '../../../types';
 
-interface PaymentSuccessModalProps {
-  isVisible: boolean;
-  onClose: () => void;
-  onBackToHome: () => void;
-}
-
-const PaymentSuccessModal: React.FC<PaymentSuccessModalProps> = ({
+const PaymentSuccessModal: React.FC<IPaymentSuccessModalProps> = ({
   isVisible,
   onClose,
   onBackToHome,

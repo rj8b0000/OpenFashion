@@ -4,20 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { FontFamily } from '../../../theme/typography';
 import ICONS from '../../../constants/svgPath';
 import { TouchableOpacity } from 'react-native';
-
-interface FilterBarProps {
-  isGrid: boolean;
-  setIsGrid: React.Dispatch<React.SetStateAction<boolean>>;
-  onFilterPress?: () => void;
-  totalItems: number;
-}
+import { IFilterBarProps } from '../../../types';
 
 const FilterBar = ({
   isGrid,
   setIsGrid,
   onFilterPress,
   totalItems,
-}: FilterBarProps) => {
+}: IFilterBarProps) => {
   const { t } = useTranslation();
   return (
     <View style={styles.container}>

@@ -2,10 +2,9 @@ import React from 'react';
 import { StyleSheet, TextInput, TextInputProps } from 'react-native';
 import { Colors, Typography } from '../../../theme';
 import responsive from '../../../styles/responsive';
+import { ICustomTextInputProps } from '../../../types';
 
-type CustomTextInputProps = TextInputProps;
-
-const CustomTextInput: React.FC<CustomTextInputProps> = ({
+const CustomTextInput: React.FC<ICustomTextInputProps> = ({
   style,
   ...rest
 }) => {

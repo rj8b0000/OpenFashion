@@ -2,14 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Colors, Radius, Spacing } from '../../../theme';
 import responsive from '../../../styles/responsive';
+import { ICreditCardPreviewProps } from '../../../types';
 
-interface Props {
-  name: string;
-  number: string;
-  expiry: string;
-}
-
-const CreditCardPreview = ({ name, number, expiry }: Props) => {
+const CreditCardPreview = ({ name, number, expiry }: ICreditCardPreviewProps) => {
   return (
     <View style={styles.card}>
       <View style={styles.logoRow}>

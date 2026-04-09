@@ -10,14 +10,7 @@ import {
 import { FontFamily } from '../../../theme/typography';
 import { Spacing } from '../../../theme';
 import responsive from '../../../styles/responsive';
-
-interface FilterModalProps {
-  isVisible: boolean;
-  onClose: () => void;
-  categories: string[];
-  selectedCategories: string[];
-  onApply: (selected: string[]) => void;
-}
+import { IFilterModalProps } from '../../../types';
 
 const FilterModal = ({
   isVisible,
@@ -25,7 +18,7 @@ const FilterModal = ({
   categories,
   selectedCategories,
   onApply,
-}: FilterModalProps) => {
+}: IFilterModalProps) => {
   const [tempSelected, setTempSelected] = useState<string[]>(selectedCategories);
 
   const toggleCategory = (category: string) => {

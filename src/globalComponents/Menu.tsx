@@ -14,6 +14,7 @@ import { Colors, Spacing, Typography } from '../theme';
 import responsive from '../styles/responsive';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Dimensions } from 'react-native';
+import { IMenuProps } from '../types';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
@@ -24,11 +25,7 @@ if (Platform.OS === 'android') {
   }
 }
 
-interface MenuProps {
-  onClose: () => void;
-}
-
-const Menu: React.FC<MenuProps> = ({ onClose }) => {
+const Menu: React.FC<IMenuProps> = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState<'women' | 'man' | 'kids'>('women');
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
 

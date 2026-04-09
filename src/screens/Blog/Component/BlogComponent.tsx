@@ -2,8 +2,9 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import responsive from '../../../styles/responsive';
 import { Colors, Spacing, Typography } from '../../../theme';
+import { IBlogComponentProps } from '../../../types';
 
-const BlogComponent = ({ item }: any) => {
+const BlogComponent = ({ item }: IBlogComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

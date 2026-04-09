@@ -4,12 +4,9 @@ import responsive from '../../../styles/responsive';
 import IMAGE from '../../../constants/imagePath';
 import { GlobalStyles } from '../../../theme/styles';
 import { Colors, Spacing, Typography } from '../../../theme';
-import { PLPHome } from '../../../types';
+import { PLPHome, IProductHomeComponentProps } from '../../../types';
 
-interface ProductHomeComponentProps {
-  item: PLPHome;
-}
-const ProductHomeComponent: React.FC<ProductHomeComponentProps> = ({
+const ProductHomeComponent: React.FC<IProductHomeComponentProps> = ({
   item,
 }) => {
   return (

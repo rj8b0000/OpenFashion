@@ -1,13 +1,8 @@
 import React from 'react';
 import { Modal, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
+import { IViewFullImageProps } from '../../../types';
 
-interface ViewFullImageProps {
-  visible: boolean;
-  image: any;
-  onClose: () => void;
-}
-
-const ViewFullImage: React.FC<ViewFullImageProps> = ({ visible, image, onClose }) => {
+const ViewFullImage: React.FC<IViewFullImageProps> = ({ visible, image, onClose }) => {
   return (
     <Modal
       visible={visible}
