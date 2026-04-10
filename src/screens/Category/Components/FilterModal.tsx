@@ -6,9 +6,10 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import { FontFamily } from '../../../theme/typography';
-import { Spacing } from '../../../theme';
+import { Spacing, Colors, Radius } from '../../../theme';
 import responsive from '../../../styles/responsive';
 import { IFilterModalProps } from '../../../types';
 
@@ -19,7 +20,10 @@ const FilterModal = ({
   selectedCategories,
   onApply,
 }: IFilterModalProps) => {
-  const [tempSelected, setTempSelected] = useState<string[]>(selectedCategories);
+  const [tempSelected, setTempSelected] =
+    useState<string[]>(selectedCategories);
+  const { width: windowWidth } = Dimensions.get('window');
+  const isTablet = windowWidth > 600;
 
   const toggleCategory = (category: string) => {
     if (tempSelected.includes(category)) {
@@ -38,7 +42,17 @@ const FilterModal = ({
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalTitle}>Filter by Category</Text>
+          <Text
+            style={[
+              styles.modalTitle,
+              isTablet && {
+                fontSize: responsive.fontSize(18),
+                marginBottom: Spacing.lg,
+              },
+            ]}
+          >
+            Filter by Category
+          </Text>
           <ScrollView style={styles.categoryList}>
             {categories.map(category => {
               const isSelected = tempSelected.includes(category);
@@ -47,6 +61,10 @@ const FilterModal = ({
                   key={category}
                   style={[
                     styles.categoryItem,
+                    isTablet && {
+                      paddingVertical: Spacing.sm,
+                      paddingHorizontal: Spacing.md,
+                    },
                     isSelected && styles.selectedCategoryItem,
                   ]}
                   onPress={() => toggleCategory(category)}
@@ -54,6 +72,7 @@ const FilterModal = ({
                   <Text
                     style={[
                       styles.categoryText,
+                      isTablet && { fontSize: responsive.fontSize(14) },
                       isSelected && styles.selectedCategoryText,
                     ]}
                   >
@@ -64,18 +83,42 @@ const FilterModal = ({
             })}
           </ScrollView>
 
-          <View style={styles.buttonContainer}>
+          <View
+            style={[styles.buttonContainer, isTablet && { gap: Spacing.md }]}
+          >
             <TouchableOpacity
-              style={[styles.button, styles.cancelButton]}
+              style={[
+                styles.button,
+                styles.cancelButton,
+                isTablet && { padding: Spacing.sm },
+              ]}
               onPress={onClose}
             >
-              <Text style={styles.cancelButtonText}>Cancel</Text>
+              <Text
+                style={[
+                  styles.cancelButtonText,
+                  isTablet && { fontSize: responsive.fontSize(14) },
+                ]}
+              >
+                Cancel
+              </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={[styles.button, styles.applyButton]}
+              style={[
+                styles.button,
+                styles.applyButton,
+                isTablet && { padding: Spacing.sm },
+              ]}
               onPress={() => onApply(tempSelected)}
             >
-              <Text style={styles.applyButtonText}>Apply</Text>
+              <Text
+                style={[
+                  styles.applyButtonText,
+                  isTablet && { fontSize: responsive.fontSize(14) },
+                ]}
+              >
+                Apply
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -93,69 +136,69 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
   modalView: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
-    padding: 20,
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: Radius.xl,
+    borderTopRightRadius: Radius.xl,
+    padding: Spacing.lg,
     maxHeight: '80%',
     width: '100%',
   },
   modalTitle: {
-    fontSize: 22,
+    fontSize: responsive.fontSize(22),
     fontFamily: FontFamily.regular,
-    marginBottom: 20,
+    marginBottom: Spacing.md,
     textAlign: 'center',
-    color: '#000',
+    color: Colors.titleActive,
   },
   categoryList: {
-    marginBottom: 20,
+    marginBottom: Spacing.md,
   },
   categoryItem: {
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginBottom: 10,
-    backgroundColor: '#F9F9F9',
+    paddingVertical: Spacing.sm,
+    paddingHorizontal: Spacing.lg,
+    borderRadius: Radius.sm,
+    marginBottom: Spacing.sm,
+    backgroundColor: Colors.tagBg,
     borderWidth: 1,
-    borderColor: '#EEEEEE',
+    borderColor: Colors.divider,
   },
   selectedCategoryItem: {
-    backgroundColor: '#333',
-    borderColor: '#333',
+    backgroundColor: Colors.body,
+    borderColor: Colors.body,
   },
   categoryText: {
-    fontSize: 16,
+    fontSize: responsive.fontSize(14),
     fontFamily: FontFamily.regular,
-    color: '#333',
+    color: Colors.body,
   },
   selectedCategoryText: {
-    color: '#FFF',
+    color: Colors.white,
   },
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    gap: 10,
+    gap: Spacing.sm,
   },
   button: {
     flex: 1,
-    padding: 15,
+    padding: Spacing.md,
     borderRadius: 30,
     alignItems: 'center',
   },
   cancelButton: {
-    backgroundColor: '#F2F2F2',
+    backgroundColor: Colors.infoBg,
   },
   applyButton: {
-    backgroundColor: '#333',
+    backgroundColor: Colors.body,
   },
   cancelButtonText: {
-    color: '#555',
+    color: Colors.label,
     fontFamily: FontFamily.regular,
-    fontSize: 16,
+    fontSize: responsive.fontSize(14),
   },
   applyButtonText: {
-    color: '#FFF',
+    color: Colors.white,
     fontFamily: FontFamily.regular,
-    fontSize: 16,
+    fontSize: responsive.fontSize(14),
   },
 });

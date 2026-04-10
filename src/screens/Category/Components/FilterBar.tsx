@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { FontFamily } from '../../../theme/typography';
@@ -16,32 +16,57 @@ const FilterBar = ({
   hideNewBadge,
 }: IFilterBarProps) => {
   const { t } = useTranslation();
+  const { width } = Dimensions.get('window');
+  const isTablet = width > 600;
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title} numberOfLines={1}>
+      <Text
+        style={[styles.title, isTablet && { fontSize: 24 }]}
+        numberOfLines={1}
+      >
         {title || t('categoryApparelCount', { count: totalItems })}
       </Text>
-      <View style={styles.rightSection}>
-        {/* {!hideNewBadge && ( */}
-        <View style={styles.newBadge}>
-          <Text style={styles.newBadgeText}>{t('categoryNew')}</Text>
-          <ICONS.DOWN width={8} height={8} />
+      <View style={[styles.rightSection, isTablet && { gap: Spacing.md }]}>
+        <View
+          style={[
+            styles.newBadge,
+            isTablet && { paddingVertical: 12, paddingHorizontal: 20 },
+          ]}
+        >
+          <Text
+            style={[styles.newBadgeText, isTablet && { fontSize: 18 }]}
+          >
+            {t('categoryNew')}
+          </Text>
+          <ICONS.DOWN width={isTablet ? 12 : 8} height={isTablet ? 12 : 8} />
         </View>
-        {/* )} */}
         <TouchableOpacity
-          style={styles.iconWrapper}
+          style={[styles.iconWrapper, isTablet && { padding: 14 }]}
           onPress={() => {
             setIsGrid(prev => !prev);
           }}
         >
           {isGrid ? (
-            <ICONS.GRID width={22} height={22} />
+            <ICONS.GRID
+              width={isTablet ? 30 : 22}
+              height={isTablet ? 30 : 22}
+            />
           ) : (
-            <ICONS.LISTVIEW width={22} height={22} />
+            <ICONS.LISTVIEW
+              width={isTablet ? 30 : 22}
+              height={isTablet ? 30 : 22}
+            />
           )}
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconWrapper} onPress={onFilterPress}>
-          <ICONS.FILTER width={24} height={24} />
+        <TouchableOpacity
+          style={[styles.iconWrapper, isTablet && { padding: 14 }]}
+          onPress={onFilterPress}
+        >
+          <ICONS.FILTER
+            width={isTablet ? 34 : 24}
+            height={isTablet ? 34 : 24}
+          />
         </TouchableOpacity>
       </View>
     </View>
@@ -65,18 +90,17 @@ const styles = StyleSheet.create({
     marginRight: Spacing.sm,
   },
   rightSection: {
-    width: '46%',
-    alignSelf: 'flex-end',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: Spacing.sm,
   },
   newBadge: {
     flexDirection: 'row',
     gap: 6,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: '6%',
-    paddingHorizontal: '8%',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
     borderRadius: 30,
     backgroundColor: '#f2f2f2ff',
   },
@@ -89,7 +113,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f2f2f2ff',
-    padding: '5%',
+    padding: 8,
     borderRadius: 50,
   },
 });

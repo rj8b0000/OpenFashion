@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -20,7 +20,9 @@ const CategoryScreen = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
-  const itemsPerPage = 4;
+  const { width: windowWidth } = Dimensions.get('window');
+  const isTablet = windowWidth > 600;
+  const itemsPerPage = isTablet ? 8 : 4;
 
   const categories = Array.from(
     new Set(categoryData.map(item => item.category)),
@@ -83,7 +85,7 @@ const CategoryScreen = () => {
           <View style={{ height: '1%' }} />
 
           <FlatList
-            key={isGrid ? 'grid' : 'list'}
+            key={`${isGrid ? 'grid' : 'list'}-${isTablet ? 'tablet' : 'mobile'}`}
             data={paginatedData}
             renderItem={({ item }) => (
               <ProductComponent item={item} isGrid={isGrid} />
@@ -97,7 +99,7 @@ const CategoryScreen = () => {
             showsVerticalScrollIndicator={false}
             ListFooterComponent={<View style={{ height: Spacing.sm }} />}
           />
-          <Pagination
+         <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={page => setCurrentPage(page)}

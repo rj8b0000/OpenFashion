@@ -1,4 +1,11 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import ICONS from '../constants/svgPath';
@@ -7,17 +14,31 @@ import responsive from '../styles/responsive';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackNavigationProp } from '../navigator/types';
 import { IProductComponentProps } from '../types';
+import { Spacing } from '../theme';
 
-const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) => {
+const ProductComponent = ({
+  item,
+  isGrid,
+  isCheckout,
+}: IProductComponentProps) => {
   const { t } = useTranslation();
   const navigation = useNavigation<RootStackNavigationProp>();
+  const { width: windowWidth } = Dimensions.get('window');
+  const isTablet = windowWidth > 600;
+
+  const TABLET_TITLE_SIZE = responsive.fontSize(14);
+  const TABLET_DESC_SIZE = responsive.fontSize(12);
+  const TABLET_PRICE_SIZE = responsive.fontSize(16);
+  const TABLET_LABEL_SIZE = responsive.fontSize(14);
+
+  const itemWidth = isGrid ? '48%' : '100%';
+
   return (
     <Pressable
       style={[
         styles.container,
         {
-          width: isGrid ? '48%' : '100%',
-          height: isGrid ? responsive.height(290) : responsive.height(180),
+          width: itemWidth,
         },
       ]}
       onPress={() => navigation.navigate('PDP')}
@@ -31,11 +52,23 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
         ]}
       >
         <View
-          style={isGrid ? styles.imageWrapperGrid : styles.imageWrapperList}
+          style={[
+            isGrid ? styles.imageWrapperGrid : styles.imageWrapperList,
+            isGrid && isTablet && { aspectRatio: 165 / 260 },
+            !isGrid && {
+              aspectRatio: isTablet ? 1 / 0.8 : undefined,
+              height: isTablet ? undefined : responsive.height(170),
+              width: isTablet ? '45%' : '40%',
+            },
+          ]}
         >
           <Image source={item.image} resizeMode="cover" style={styles.image} />
           {isGrid && (
-            <ICONS.HEART width={18} height={18} style={styles.heartIcon} />
+            <ICONS.HEART
+              width={isTablet ? responsive.width(14) : responsive.width(18)}
+              height={isTablet ? responsive.width(14) : responsive.width(18)}
+              style={styles.heartIcon}
+            />
           )}
         </View>
         <View
@@ -43,8 +76,10 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
             styles.detailsContainer,
             {
               marginTop: isGrid ? '4%' : '0%',
-              width: isGrid ? '100%' : '60%',
-              padding: isGrid ? '0%' : '4%',
+              width: isGrid ? '100%' : isTablet ? '52%' : '60%',
+              padding: isGrid ? '0%' : '2%',
+              paddingLeft: !isGrid && isTablet ? '2%' : '4%',
+              justifyContent: 'flex-start',
             },
           ]}
         >
@@ -57,7 +92,7 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
               style={[
                 styles.nameText,
                 {
-                  fontSize: isGrid ? 17 : 18,
+                  fontSize: isTablet ? TABLET_TITLE_SIZE : isGrid ? 17 : 18,
                 },
               ]}
             >
@@ -68,7 +103,7 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
                 style={[
                   styles.descriptionText,
                   {
-                    fontSize: isGrid ? 14 : 15,
+                    fontSize: isTablet ? TABLET_DESC_SIZE : isGrid ? 14 : 15,
                   },
                 ]}
               >
@@ -92,7 +127,11 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
               style={[
                 styles.priceText,
                 {
-                  fontSize: isGrid ? 18 : 20,
+                  fontSize: isTablet
+                    ? TABLET_PRICE_SIZE
+                    : isGrid
+                    ? responsive.fontSize(18)
+                    : responsive.fontSize(20),
                   marginTop: isCheckout ? '4%' : '2%',
                 },
               ]}
@@ -105,11 +144,31 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
             <View style={styles.listViewDetails}>
               <View style={styles.ratingContainer}>
                 <ICONS.STAR width={18} height={18} />
-                <Text style={styles.ratingText}>{t('categoryRatings')}</Text>
+                <Text
+                  style={[
+                    styles.ratingText,
+                    {
+                      fontSize: isTablet
+                        ? responsive.fontSize(14)
+                        : responsive.fontSize(14),
+                    },
+                  ]}
+                >
+                  {t('categoryRatings')}
+                </Text>
               </View>
               <View style={styles.bottomRow}>
                 <View style={styles.sizeContainer}>
-                  <Text style={styles.sizeLabel}>{t('categorySize')}</Text>
+                  <Text
+                    style={[
+                      styles.sizeLabel,
+                      {
+                        fontSize: isTablet ? TABLET_LABEL_SIZE : 16,
+                      },
+                    ]}
+                  >
+                    {t('categorySize')}
+                  </Text>
                   <View style={styles.sizeOptions}>
                     <View style={styles.sizeCircle}>
                       <Text style={styles.sizeText}>{t('sizeSmall')}</Text>
@@ -131,12 +190,9 @@ const ProductComponent = ({ item, isGrid, isCheckout }: IProductComponentProps) 
     </Pressable>
   );
 };
-
-export default ProductComponent;
-
 const styles = StyleSheet.create({
   container: {
-    marginTop: '3%',
+    marginTop: Spacing.xs,
   },
   innerContainer: {
     width: '100%',
@@ -147,7 +203,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   detailsContainer: {
-    justifyContent: 'space-between',
+    flex: 1,
   },
   nameText: {
     fontFamily: FontFamily.regular,
@@ -163,9 +219,8 @@ const styles = StyleSheet.create({
     marginTop: '2%',
   },
   listViewDetails: {
-    marginTop: '2%',
-    height: '45%',
-    justifyContent: 'space-between',
+    marginTop: '4%',
+    gap: 12,
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -174,7 +229,6 @@ const styles = StyleSheet.create({
     marginTop: '2%',
   },
   ratingText: {
-    fontSize: 16,
     fontFamily: FontFamily.regular,
     color: '#000',
   },
@@ -189,7 +243,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   sizeLabel: {
-    fontSize: 16,
     fontFamily: FontFamily.regular,
   },
   sizeOptions: {
@@ -197,8 +250,8 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   sizeCircle: {
-    width: 30,
-    height: 30,
+    width: responsive.width(25),
+    height: responsive.width(25),
     borderWidth: 1,
     borderRadius: 100,
     justifyContent: 'center',
@@ -206,24 +259,22 @@ const styles = StyleSheet.create({
     borderColor: '#DEDEDE',
   },
   sizeText: {
-    fontSize: 12,
+    fontSize: responsive.fontSize(10),
     fontFamily: FontFamily.regular,
     padding: '5%',
   },
   imageWrapperGrid: {
-    height: 220,
-    borderColor: 'green',
+    aspectRatio: 165 / 220,
     width: '100%',
   },
   imageWrapperList: {
-    height: 190,
-    borderColor: 'red',
-    width: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   heartIcon: {
     position: 'absolute',
-    bottom: 8,
-    right: 8,
+    bottom: '2%',
+    right: '4%',
   },
   checkoutCounterContainer: {
     flexDirection: 'row',
@@ -246,3 +297,4 @@ const styles = StyleSheet.create({
     color: '#333',
   },
 });
+export default ProductComponent;

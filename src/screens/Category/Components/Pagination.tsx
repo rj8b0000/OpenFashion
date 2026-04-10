@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import ICONS from '../../../constants/svgPath';
 import { FontFamily } from '../../../theme/typography';
 import responsive from '../../../styles/responsive';
@@ -10,11 +16,25 @@ const Pagination = ({
   totalPages,
   onPageChange,
 }: IPaginationProps) => {
+  const { width } = Dimensions.get('window');
+  const isTablet = width > 600;
+  const PAGE_BOX_SIZE = isTablet ? responsive.width(28) : responsive.width(40);
+  const FONT_SIZE = isTablet
+    ? responsive.fontSize(14)
+    : responsive.fontSize(18);
+  const ICON_SIZE = isTablet ? responsive.width(16) : responsive.width(24);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <View style={styles.container}>
-      {pages.map(page => (
+    <View
+      style={[
+        styles.container,
+        {
+          marginVertical: isTablet ? 16 : '5.5%',
+        },
+      ]}
+    >
+      {pages.map((page: any) => (
         <TouchableOpacity
           key={page}
           style={[
@@ -22,6 +42,10 @@ const Pagination = ({
             currentPage === page
               ? styles.activePageBox
               : styles.inactivePageBox,
+            {
+              width: PAGE_BOX_SIZE,
+              height: PAGE_BOX_SIZE,
+            },
           ]}
           onPress={() => onPageChange(page)}
         >
@@ -31,6 +55,7 @@ const Pagination = ({
               currentPage === page
                 ? styles.activePageText
                 : styles.inactivePageText,
+              { fontSize: FONT_SIZE },
             ]}
           >
             {page}
@@ -45,7 +70,7 @@ const Pagination = ({
           }
         }}
       >
-        <ICONS.FORWARD width={30} height={30} color="#333" />
+        <ICONS.FORWARD width={ICON_SIZE} height={ICON_SIZE} color="#333" />
       </TouchableOpacity>
     </View>
   );
@@ -58,12 +83,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: '5.5%',
     gap: 12,
   },
   pageBox: {
-    width: responsive.width(40),
-    height: responsive.width(40),
     justifyContent: 'center',
     alignItems: 'center',
   },
