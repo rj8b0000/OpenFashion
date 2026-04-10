@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import responsive from '../../../styles/responsive';
 import IMAGE from '../../../constants/imagePath';
@@ -26,13 +26,12 @@ export default ProductHomeComponent;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: responsive.width(254),
-    height: responsive.height(310),
+    width: Dimensions.get('window').width > 600 ? 300 : responsive.width(254),
+    aspectRatio: 255 / 312,
     marginRight: Spacing.md,
   },
   contentContainer: {
-    height: responsive.height(72),
-    width: responsive.width(254),
+    width: Dimensions.get('window').width > 600 ? 300 : responsive.width(254),
   },
   name: {
     textAlign: 'center',

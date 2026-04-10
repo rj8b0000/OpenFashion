@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   flatListContent: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+    justifyContent: 'center',
+    paddingHorizontal: Spacing.md,
     marginTop: Spacing.md,
-    padding: '2%',
   },
 });

@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, View } from 'react-native';
 import React, { useState } from 'react';
 import Header from '../../globalComponents/Header';
 import { GlobalStyles } from '../../theme/styles';
@@ -24,9 +24,11 @@ import Footer from '../../globalComponents/Footer';
 
 const AnimatedSafeAreaView = Animated.createAnimatedComponent(SafeAreaView);
 
-const HomeScreen = () => {
-  const [sliderHeight, setSliderHeight] = useState(0);
+const { width } = Dimensions.get('window');
+const BANNER_ASPECT_RATIO = 375 / 600;
+const SLIDER_HEIGHT = width / BANNER_ASPECT_RATIO;
 
+const HomeScreen = () => {
   const scrollY = useSharedValue(0);
 
   const scrollHandler = useAnimatedScrollHandler({
@@ -38,7 +40,7 @@ const HomeScreen = () => {
   const animatedBg = useAnimatedStyle(() => {
     const bgColor = interpolateColor(
       scrollY.value,
-      [0, sliderHeight],
+      [0, SLIDER_HEIGHT],
       [Colors.bannerGray, '#ffffff'],
     );
 
@@ -59,12 +61,8 @@ const HomeScreen = () => {
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
-        onLayout={e => {
-          const { height } = e.nativeEvent.layout;
-          setSliderHeight(height);
-        }}
       >
-        <View style={{ height: sliderHeight }}>
+        <View style={{ height: SLIDER_HEIGHT }}>
           <CustomSlider sliderData={sliderData} />
         </View>
 

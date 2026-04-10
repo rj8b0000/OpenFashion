@@ -21,6 +21,9 @@ import { useTranslation } from 'react-i18next';
 
 const { width } = Dimensions.get('window');
 const isTablet = width > 600;
+const MENU_WIDTH = isTablet ? 450 : width;
+const TAB_FONT_SIZE = isTablet ? 22 : responsive.fontSize(16);
+const MENU_ITEM_FONT_SIZE = isTablet ? 22 : responsive.fontSize(16);
 
 if (Platform.OS === 'android') {
   if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -33,6 +36,9 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
   const navigation = useNavigation<any>();
   const [activeTab, setActiveTab] = useState<'women' | 'man' | 'kids'>('women');
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const iconsWidthHeight = isTablet
+    ? responsive.width(16)
+    : responsive.width(24);
 
   const categories = [
     'New',
@@ -71,8 +77,12 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
           style={[
             Typography.subTitle,
             styles.tabText,
-            { color: isActive ? Colors.black : Colors.placeholder },
+            {
+              color: isActive ? Colors.black : Colors.placeholder,
+              fontSize: TAB_FONT_SIZE,
+            },
           ]}
+          numberOfLines={1}
         >
           {label}
         </Text>
@@ -117,7 +127,13 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 onPress={() => handleToggleExpand(item)}
                 activeOpacity={0.8}
               >
-                <Text style={[Typography.bodyLarge, styles.menuItemText]}>
+                <Text
+                  style={[
+                    Typography.bodyLarge,
+                    styles.menuItemText,
+                    { fontSize: MENU_ITEM_FONT_SIZE },
+                  ]}
+                >
                   {item}
                 </Text>
                 {expandedItem === item ? (
@@ -137,7 +153,14 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 <View style={styles.expandedContent}>
                   {apparelSubItems.map(subItem => (
                     <TouchableOpacity key={subItem} style={styles.subItem}>
-                      <Text style={[Typography.bodyMedium, styles.subItemText]}>
+                      <Text
+                        style={[
+                          isTablet
+                            ? Typography.bodySmall
+                            : Typography.bodyMedium,
+                          styles.subItemText,
+                        ]}
+                      >
                         {subItem}
                       </Text>
                     </TouchableOpacity>
@@ -154,7 +177,13 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 width={responsive.width(24)}
                 height={responsive.width(24)}
               />
-              <Text style={[Typography.bodyLarge, styles.contactText]}>
+              <Text
+                style={[
+                  Typography.bodyLarge,
+                  styles.contactText,
+                  { fontSize: MENU_ITEM_FONT_SIZE },
+                ]}
+              >
                 (786) 713-8616
               </Text>
             </View>
@@ -163,7 +192,13 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 width={responsive.width(24)}
                 height={responsive.width(24)}
               />
-              <Text style={[Typography.bodyLarge, styles.contactText]}>
+              <Text
+                style={[
+                  Typography.bodyLarge,
+                  styles.contactText,
+                  { fontSize: MENU_ITEM_FONT_SIZE },
+                ]}
+              >
                 Store locator
               </Text>
             </View>
@@ -179,7 +214,7 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 style={[
                   Typography.bodyLarge,
                   styles.contactText,
-                  { marginLeft: 0 },
+                  { marginLeft: 0, fontSize: MENU_ITEM_FONT_SIZE },
                 ]}
               >
                 {t('ourStoryTitle')}
@@ -197,7 +232,7 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
                 style={[
                   Typography.bodyLarge,
                   styles.contactText,
-                  { marginLeft: 0 },
+                  { marginLeft: 0, fontSize: MENU_ITEM_FONT_SIZE },
                 ]}
               >
                 {t('contactUsTitle')}
@@ -210,16 +245,16 @@ const Menu: React.FC<IMenuProps> = ({ onClose }) => {
             <ICONS.DIVIDER style={styles.footerDivider} />
             <View style={styles.socialIcons}>
               <ICONS.TWITTER
-                width={responsive.width(24)}
-                height={responsive.width(24)}
+                width={iconsWidthHeight}
+                height={iconsWidthHeight}
               />
               <ICONS.IG_FOOTER
-                width={responsive.width(24)}
-                height={responsive.width(24)}
+                width={iconsWidthHeight}
+                height={iconsWidthHeight}
               />
               <ICONS.YOUTUBE
-                width={responsive.width(24)}
-                height={responsive.width(24)}
+                width={iconsWidthHeight}
+                height={iconsWidthHeight}
               />
             </View>
           </View>
@@ -255,12 +290,14 @@ const styles = StyleSheet.create({
   },
   tabsHeader: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    gap: isTablet ? Spacing.xs : Spacing.xl,
     marginBottom: Spacing.xl,
+    paddingHorizontal: Spacing.md,
   },
   tabContainer: {
-    flex: 1,
     alignItems: 'center',
+    minWidth: isTablet ? 120 : 80,
   },
   tabText: {
     marginBottom: Spacing.xs,
@@ -278,6 +315,7 @@ const styles = StyleSheet.create({
   },
   indicatorLine: {
     flex: 1,
+    maxWidth: isTablet ? 60 : 40,
     height: responsive.height(1),
     backgroundColor: Colors.secondary,
     opacity: 0.5,
@@ -289,6 +327,7 @@ const styles = StyleSheet.create({
   },
   inactiveIndicatorLine: {
     width: '100%',
+    maxWidth: isTablet ? 120 : 80,
     height: responsive.height(1),
     backgroundColor: Colors.placeholder,
     opacity: 0.1,
@@ -346,8 +385,9 @@ const styles = StyleSheet.create({
     marginTop: Spacing.md,
   },
   tabletContainer: {
-    maxWidth: 600,
-    alignSelf: 'center',
-    width: '100%',
+    width: MENU_WIDTH,
+    alignSelf: 'flex-start',
+    backgroundColor: Colors.white,
+    height: '100%',
   },
 });

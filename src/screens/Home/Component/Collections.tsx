@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
     marginTop: Spacing.xxl,
-    height: responsive.height(640),
   },
   collectionTextContainer: {
     justifyContent: 'center',
@@ -50,15 +49,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   bannerSecondary: {
+    width: '100%',
+    aspectRatio: 375 / 240,
     justifyContent: 'center',
     alignItems: 'center',
-    height: responsive.height(240),
   },
   banner2: {
+    width: responsive.width(260),
+    aspectRatio: 260 / 296,
+    marginTop: Spacing.xxl,
     justifyContent: 'center',
     alignItems: 'center',
-    height: responsive.height(296),
-    width: responsive.width(260),
     alignSelf: 'center',
   },
 });

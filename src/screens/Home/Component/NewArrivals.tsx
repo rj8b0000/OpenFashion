@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Dimensions,
 } from 'react-native';
 import React from 'react';
 import { Colors, Spacing, Typography } from '../../../theme';
@@ -20,6 +21,10 @@ const NewArrivals = () => {
   const navigation = useNavigation<RootStackNavigationProp>();
   const isGrid = true;
   const { t } = useTranslation();
+  const { width } = Dimensions.get('window');
+  const isTablet = width > 600;
+  const numColumns = isTablet ? 4 : 2;
+
   return (
     <View style={{ backgroundColor: Colors.white, paddingTop: Spacing.xxxl }}>
       <View
@@ -40,11 +45,11 @@ const NewArrivals = () => {
         }}
       >
         <FlatList
-          key={isGrid ? 'grid' : 'list'}
+          key={numColumns} // Force re-render when columns change
           data={productsData}
           renderItem={({ item }) => <NewArrivalProducts item={item} />}
           keyExtractor={item => item.id}
-          numColumns={isGrid ? 2 : 1}
+          numColumns={numColumns}
           columnWrapperStyle={
             isGrid ? { justifyContent: 'space-between' } : undefined
           }

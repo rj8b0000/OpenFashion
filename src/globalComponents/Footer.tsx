@@ -1,18 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Colors, Spacing, Typography } from '../theme';
 import ICONS from '../constants/svgPath';
 import { useTranslation } from 'react-i18next';
+import responsive from '../styles/responsive';
 
 const Footer = () => {
   const { t } = useTranslation();
+  const { width: windowWidth } = Dimensions.get('window');
+  const isTablet = windowWidth > 600;
+  const ICON_SIZE = isTablet ? 18 : 24;
+
   return (
     <>
       <View style={styles.container}>
         <View style={styles.socialIconsContainer}>
-          <ICONS.TWITTER width={26} height={26} />
-          <ICONS.IG_FOOTER width={26} height={26} />
-          <ICONS.YOUTUBE width={26} height={26} />
+          <ICONS.TWITTER
+            width={responsive.width(ICON_SIZE)}
+            height={responsive.width(ICON_SIZE)}
+          />
+          <ICONS.IG_FOOTER
+            width={responsive.width(ICON_SIZE)}
+            height={responsive.width(ICON_SIZE)}
+          />
+          <ICONS.YOUTUBE
+            width={responsive.width(ICON_SIZE)}
+            height={responsive.width(ICON_SIZE)}
+          />
         </View>
         <ICONS.DIVIDER style={styles.divider} />
         <View style={styles.contactInfoContainer}>
@@ -43,9 +57,9 @@ const styles = StyleSheet.create({
   },
   socialIconsContainer: {
     flexDirection: 'row',
-    width: '55%',
     alignSelf: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    gap: Spacing.xxxl,
     marginBottom: Spacing.xl,
   },
   divider: {
@@ -58,9 +72,9 @@ const styles = StyleSheet.create({
   },
   navLinksContainer: {
     flexDirection: 'row',
-    width: '84%',
     alignSelf: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    gap: Spacing.xl,
     marginTop: Spacing.xl,
   },
   cpyRightContainer: {

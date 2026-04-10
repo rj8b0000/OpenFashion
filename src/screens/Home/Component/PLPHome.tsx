@@ -15,14 +15,19 @@ import ICONS from '../../../constants/svgPath';
 import ProductHomeComponent from './ProductHomeComponent';
 import { plpHomeData } from '../../../constants/plpHomeData';
 
-const width = responsive.width(150);
+const { width: windowWidth } = Dimensions.get('window');
+const isTablet = windowWidth > 600;
+const CARD_WIDTH = isTablet ? 300 : responsive.width(254);
+const SNAP_WIDTH = CARD_WIDTH + Spacing.md;
+
 const PLPHome = () => {
   const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const slide = Math.round(event.nativeEvent.contentOffset.x / width);
+    const slide = Math.round(event.nativeEvent.contentOffset.x / SNAP_WIDTH);
     setActiveIndex(slide);
   };
+
   const flatRef = useRef<FlatList>(null);
 
   return (
@@ -36,12 +41,8 @@ const PLPHome = () => {
         <Text style={Typography.title}>{t('justForYou')}</Text>
         <ICONS.DIVIDER />
       </View>
-      <View style={{ paddingLeft: Spacing.md }}>
-        <View
-          style={{
-            height: responsive.height(392),
-          }}
-        >
+      <View style={{ paddingLeft: Spacing.md, marginTop: Spacing.md }}>
+        <View>
           <FlatList
             ref={flatRef}
             keyExtractor={item => item.id}
@@ -72,7 +73,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.white,
     marginTop: Spacing.xxl,
-    height: responsive.height(530),
     paddingVertical: Spacing.xl,
     justifyContent: 'space-between',
   },

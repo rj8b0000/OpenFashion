@@ -64,12 +64,11 @@ export default CustomSlider;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '100%', // takes parent height
   },
 
   card: {
     width: width,
-    height: '100%',
+    aspectRatio: 375 / 600, // Based on HomeBanner.png dimensions
   },
 
   image: {

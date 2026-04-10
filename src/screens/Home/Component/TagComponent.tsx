@@ -17,15 +17,14 @@ export default TagComponent;
 const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.tagBg,
-    justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: Radius.xl,
-    marginBottom: Spacing.md,
-    marginHorizontal: '1%',
+    paddingHorizontal: Spacing.md,
+    paddingVertical: Spacing.xs,
+    margin: Spacing.xs,
   },
   text: {
     ...Typography.tagFonts,
     textAlign: 'center',
-    margin: Spacing.sm,
+    marginVertical: Spacing.xs,
   },
 });

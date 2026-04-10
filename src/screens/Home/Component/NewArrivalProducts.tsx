@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Colors, FontFamily, Typography } from '../../../theme';
 import { Product, INewArrivalProductsProps } from '../../../types';
@@ -9,7 +9,7 @@ const NewArrivalProducts: React.FC<INewArrivalProductsProps> = ({ item }) => {
   return (
     <View style={[styles.container]}>
       <View style={[styles.innerContainer]}>
-        <View style={styles.imageWrapperGrid}>
+        <View style={styles.imageWrapper}>
           <Image source={item.image} resizeMode="cover" style={styles.image} />
         </View>
         <View style={[styles.detailsContainer]}>
@@ -37,8 +37,7 @@ export default NewArrivalProducts;
 const styles = StyleSheet.create({
   container: {
     marginTop: '2%',
-    width: '48%',
-    height: 294,
+    width: Dimensions.get('window').width > 600 ? '24%' : '48%',
   },
   innerContainer: {
     width: '100%',
@@ -114,9 +113,8 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.regular,
     padding: '5%',
   },
-  imageWrapperGrid: {
-    height: 220,
-    borderColor: 'green',
+  imageWrapper: {
+    aspectRatio: 165 / 200,
     width: '100%',
   },
   imageWrapperList: {

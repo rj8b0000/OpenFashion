@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Dimensions,
 } from 'react-native';
 import { Colors, Spacing, Typography } from '../../../theme';
 import { useTranslation } from 'react-i18next';
@@ -58,10 +59,10 @@ const styles = StyleSheet.create({
   },
 
   tabsContainer: {
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: Spacing.md,
-    width: '85%',
+    gap: Spacing.lg,
     height: 50,
   },
 
