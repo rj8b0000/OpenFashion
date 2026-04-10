@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   Modal,
   StyleSheet,
@@ -22,8 +23,16 @@ const FilterModal = ({
 }: IFilterModalProps) => {
   const [tempSelected, setTempSelected] =
     useState<string[]>(selectedCategories);
+  const { t } = useTranslation();
   const { width: windowWidth } = Dimensions.get('window');
   const isTablet = windowWidth > 600;
+
+  const categoryKeys: { [key: string]: string } = {
+    women: 'categoryWomen',
+    'all apparel': 'categoryAllApparel',
+    kids: 'categoryKids',
+    gents: 'categoryGents',
+  };
 
   const toggleCategory = (category: string) => {
     if (tempSelected.includes(category)) {
@@ -51,7 +60,7 @@ const FilterModal = ({
               },
             ]}
           >
-            Filter by Category
+            {t('filterByCategoryTitle')}
           </Text>
           <ScrollView style={styles.categoryList}>
             {categories.map(category => {
@@ -76,7 +85,7 @@ const FilterModal = ({
                       isSelected && styles.selectedCategoryText,
                     ]}
                   >
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {t(categoryKeys[category] || category)}
                   </Text>
                 </TouchableOpacity>
               );
@@ -100,7 +109,7 @@ const FilterModal = ({
                   isTablet && { fontSize: responsive.fontSize(14) },
                 ]}
               >
-                Cancel
+                {t('filterCancel')}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -117,7 +126,7 @@ const FilterModal = ({
                   isTablet && { fontSize: responsive.fontSize(14) },
                 ]}
               >
-                Apply
+                {t('filterApply')}
               </Text>
             </TouchableOpacity>
           </View>

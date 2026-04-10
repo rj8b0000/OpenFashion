@@ -142,5 +142,12 @@
   "textUs": "TEXT US",
   "socialDescription": "To send us a private or direct message, like @Open Fashion on Facebook or follow us on Twitter. We’ll get back to you ASAP. Please include your name, order number, and email address for a faster response!",
   "pageNotFound": "PAGE NOT FOUND",
-  "pageNotFoundDescription": "We can't find the page you looking for, it will return to the"
+  "pageNotFoundDescription": "We can't find the page you looking for, it will return to the",
+  "filterByCategoryTitle": "Filter by Category",
+  "filterCancel": "Cancel",
+  "filterApply": "Apply",
+  "categoryWomen": "Women",
+  "categoryAllApparel": "All apparel",
+  "categoryKids": "Kids",
+  "categoryGents": "Gents"
 }
